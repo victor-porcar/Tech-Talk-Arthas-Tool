@@ -69,8 +69,8 @@ ts=2024-06-05 13:45:42; [cost=0.037923ms] result=@ArrayList[
     null,
     null,
     java.lang.NullPointerException
-	at tv.mirada.iris.user.profile.Test.myMethod(Test.java:264)
-	at tv.mirada.iris.user.profile.Test.lambda$getCallableForThread$0(Test.java:213)
+	at com.test.MyClass.myMethod(Test.java:264)
+	at com.test.MyClass.lambda$getCallableForThread$0(Test.java:213)
 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
