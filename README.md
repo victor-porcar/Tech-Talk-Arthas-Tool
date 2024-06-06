@@ -3,7 +3,7 @@ This is a cheat sheet for the [Arthas](https://github.com/alibaba/arthas) tool
 
 ## Introduction
 
-[Arthas](https://github.com/alibaba/arthas) is a complete set of diagnostic tools to troubleshoot production issues on the fly.  
+[Arthas](https://github.com/alibaba/arthas) is a complete set of diagnostic tools to troubleshoot JVM issues on the fly.  
 
 In order to use it, download it and execute it as follows:
 ```
