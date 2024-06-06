@@ -3,21 +3,57 @@ This is a cheat sheet for the Arthas tool
 
 ## Introduction
 
-[Arthas](https://github.com/alibaba/arthas) is a complete set of diagnostic tools to troubleshoot production issues on the fly. `
+[Arthas](https://github.com/alibaba/arthas) is a complete set of diagnostic tools to troubleshoot production issues on the fly.  
 
+In order to use it, download it and execute it as follows:
 ```
 curl -O https://arthas.aliyun.com/arthas-boot.jar
-java -jar arthas-boot.jar
+java -jar arthas-boot.jar   
 ```
- 
-After you select the process you want Arthas to be attached to, you can use various commands
+`arthas-boot.jar` will detect all running JVM and will allow you to select one
+```
+victor.porcar@CAS00560:~/arthas$ java -jar arthas-boot.jar
+[INFO] JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64/jre
+[INFO] arthas-boot version: 3.7.2
+[INFO] Found existing java process, please choose one and input the serial number of the process, eg : 1. Then hit ENTER.
+* [1]: 130961 org.gradle.launcher.daemon.bootstrap.GradleDaemon
+  [2]: 131521 com.test.SearchApplication
+  [3]: 14026 com.intellij.idea.Main
 
-TODO -> PUT EXAMPLE OPEN CONSOLE, DO SIMPLE OPERATION AND EXIT
+```
+Now you have to choose one of the JVM, once selected, the Arthas console will appear:
+
+```
+2
+[INFO] arthas home: /home/victor.porcar/.arthas/lib/3.7.2/arthas
+[INFO] Try to attach process 131521
+Picked up JAVA_TOOL_OPTIONS: 
+[INFO] Attach process 131521 success.
+[INFO] arthas-client connect 127.0.0.1 3658
+  ,---.  ,------. ,--------.,--.  ,--.  ,---.   ,---.                           
+ /  O  \ |  .--. ''--.  .--'|  '--'  | /  O  \ '   .-'                          
+|  .-.  ||  '--'.'   |  |   |  .--.  ||  .-.  |`.  `-.                          
+|  | |  ||  |\  \    |  |   |  |  |  ||  | |  |.-'    |                         
+`--' `--'`--' '--'   `--'   `--'  `--'`--' `--'`-----'                          
+
+wiki       https://arthas.aliyun.com/doc                                        
+tutorials  https://arthas.aliyun.com/doc/arthas-tutorials.html                  
+version    3.7.2                                                                
+main_class                                                                      
+pid        131521                                                               
+time       2024-06-06 10:12:27                                                  
+
+
+```
+Then from the console you can use the Arthas commands
+
+NOTE: **Once we have finished our work, it is very important to CLOSE the arthas console by using command `close`**
+<br/><br/>
 
 
 ## Typical USE CASES
 
-### Intercept calls to a method and show params and return value
+### Intercept calls to a method and show params and return value (watch command)
 
 Let's assume this function in class (com.test.MyClass) which is called very often
 
