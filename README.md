@@ -10,9 +10,9 @@ In order to use it, download it and execute it in any environment running a JVM
 curl -O https://arthas.aliyun.com/arthas-boot.jar
 java -jar arthas-boot.jar   
 ```
-`arthas-boot.jar` will detect all running JVM and will allow you to select one
+Once executed, there will be a prompt to select the desired JVM
 ```
-victor.porcar@CAS00560:~/arthas$ java -jar arthas-boot.jar
+ 
 [INFO] JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64/jre
 [INFO] arthas-boot version: 3.7.2
 [INFO] Found existing java process, please choose one and input the serial number of the process, eg : 1. Then hit ENTER.
