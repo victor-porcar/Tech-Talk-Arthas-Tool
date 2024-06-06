@@ -53,7 +53,7 @@ NOTE: **Once we have finished our work, it is very important to CLOSE the arthas
 
 ## Typical USE CASES
 
-### Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS (if thrown)
+### Command WATCH: Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS (if thrown)
 
 To do this we'll use `watch` command Let's assume there is a function in class (com.test.MyClass) which is called from time to time
 
