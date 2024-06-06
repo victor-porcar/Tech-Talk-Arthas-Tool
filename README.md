@@ -1,5 +1,5 @@
-# arthas-cheetsheet
-This is a cheat sheet for the Arthas tool 
+# Arthas Cheetsheet
+This is a cheat sheet for the [Arthas](https://github.com/alibaba/arthas) tool 
 
 ## Introduction
 
@@ -47,7 +47,7 @@ time       2024-06-06 10:12:27
 ```
 Then from the console you can use the Arthas commands
 
-NOTE: **Once we have finished our work, it is very important to CLOSE the arthas console by using command `close`**
+NOTE: **Once we have finished our work, it is very important to CLOSE the arthas console by using command `stop`**
 <br/><br/>
 
 
