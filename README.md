@@ -114,7 +114,10 @@ ts=2024-06-05 13:45:42; [cost=0.037923ms] result=@ArrayList[
 ,
 ]
 ```
- 
+ In order to intercept only when a condition is matched (in this case first parameter "customer" equals to "1100009"
+```
+watch tv.mirada.iris.user.profile.Test httpClient '{params[0],params[1],returnObj,throwExp}'  'params[0] eq 1100009' -x 2
+```
 
 ### ver variable de una clase (singleton) o instancia (buscar la instancia de la clase)
 TODO
