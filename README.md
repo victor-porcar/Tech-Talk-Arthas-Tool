@@ -5,7 +5,7 @@ This is a cheat sheet for the [Arthas](https://github.com/alibaba/arthas) tool
 
 [Arthas](https://github.com/alibaba/arthas) is a complete set of diagnostic tools to troubleshoot JVM issues on the fly.  
 
-In order to use it, download it and execute it as follows:
+In order to use it, download it and execute it in any environment running a JVM
 ```
 curl -O https://arthas.aliyun.com/arthas-boot.jar
 java -jar arthas-boot.jar   
