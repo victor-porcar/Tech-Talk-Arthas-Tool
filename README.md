@@ -55,7 +55,7 @@ NOTE: **Once we have finished our work, it is very important to CLOSE the arthas
 
 ### Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS (if thrown)
 
-To do this we'll use `watch` command Let's assume this function in class (com.test.MyClass) which is called very often
+To do this we'll use `watch` command Let's assume there is a function in class (com.test.MyClass) which is called from time to time
 
 ```java
 
@@ -69,11 +69,18 @@ To do this we'll use `watch` command Let's assume this function in class (com.te
 
 
 
-The following command will show for each invocation (grouped in seconds) all the params, returned object and exception (if exist) 
+The following Arthas command will show for each invocation (grouped in seconds) all the params, returned object and exception (if exist) 
 
 ```
 watch com.test.MyClass myMethod '{params[0],params[1],returnObj,throwExp}' -x 2
 ```
+where in this case:
+
+params[0] -> is the first parameter passed to the method
+params[1] -> is the second parameter passed to the methdp
+returnObj -> is the returned value (null if the method return void)
+throwExp  -> is the launched exception (if any)
+
 
 then the outcome would be like:
 
