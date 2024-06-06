@@ -1,4 +1,4 @@
-# Arthas Cheetsheet
+# Arthas Cheatsheet
 This is a cheat sheet for the [Arthas](https://github.com/alibaba/arthas) tool 
 
 ## Introduction
