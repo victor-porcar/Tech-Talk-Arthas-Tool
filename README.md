@@ -76,10 +76,10 @@ watch com.test.MyClass myMethod '{params[0],params[1],returnObj,throwExp}' -x 2
 ```
 where in this case:
 
-params[0] -> is the first parameter passed to the method
-params[1] -> is the second parameter passed to the methdp
-returnObj -> is the returned value (null if the method return void)
-throwExp  -> is the launched exception (if any)
+*params[0]* -> first parameter passed to the method<br/><br/>
+*params[1]* -> second parameter passed to the methdp<br/><br/>
+*returnObj* -> returned value (null if the method return void)<br/><br/>
+*throwExp*  -> launched exception (if any)<br/><br/>
 
 
 then the outcome would be like:
