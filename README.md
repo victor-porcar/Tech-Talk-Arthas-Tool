@@ -139,8 +139,16 @@ TODO
 TODO
 
 
-### cambiar clase en caliente
+### Change class "on the fly"
+In order to change the definition of a class on the fly, Arthas offers command `retransform`
 
-TODO
+steps:
+1) regenerate class using your IDE
+2) find the .class and copy it in a working folder
+3) launch the retransform as follows
+```
+retransform <WORKING_FOLDER>/YourClass.class
+```
+
 
 
