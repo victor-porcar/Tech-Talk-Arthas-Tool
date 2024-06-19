@@ -3,7 +3,8 @@ This is a cheat sheet for the [Arthas](https://github.com/alibaba/arthas) tool
 
  
  - [Introduction](#introduction) 
- - [Typical USE CASES](#typical-use-cases) 
+ - [Typical USE CASES](#typical-use-cases)
+ - [Change CLASS definition on the fly](#Change-class-definition-on-the-fly)
 
 ## Specification
 
@@ -65,11 +66,9 @@ Arthas Server is going to shutdown...
 
 ``` 
 
-## Typical USE CASES
+## Typical Use Cases
 
-
-
-### Change CLASS definition "on the fly" using command retransform
+### Change CLASS definition on the fly
 
 In order to change the definition of a class on the fly, Arthas offers command `retransform`
 
