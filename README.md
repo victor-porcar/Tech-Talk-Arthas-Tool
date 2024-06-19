@@ -1,19 +1,17 @@
 # Arthas Cheatsheet
-This is a cheat sheet for the [Arthas](https://github.com/alibaba/arthas) tool 
+This is a cheat sheet for the [Arthas](https://github.com/alibaba/arthas) tool, which is a complete set of diagnostic tools to troubleshoot JVM issues on the fly.
 
  
  - [Introduction](#introduction) 
  - [Typical USE CASES](#typical-use-cases)
- - [Change CLASS definition on the fly](#change-class-definition-on-the-fly)
- - [Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
+     - [Change CLASS definition on the fly](#change-class-definition-on-the-fly)
+     - [Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
 
 ## Specification
 
 
 ## Introduction
-
-[Arthas](https://github.com/alibaba/arthas) is a complete set of diagnostic tools to troubleshoot JVM issues on the fly.  
-
+ 
 In order to use it, download it and execute it in any environment running a JVM
 ```
 curl -O https://arthas.aliyun.com/arthas-boot.jar
