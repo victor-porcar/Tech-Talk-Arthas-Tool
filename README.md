@@ -5,7 +5,7 @@ This is a cheat sheet for the [Arthas](https://github.com/alibaba/arthas) tool
  - [Introduction](#introduction) 
  - [Typical USE CASES](#typical-use-cases)
  - [Change CLASS definition on the fly](#change-class-definition-on-the-fly)
- - [Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#intercept-calls-to-a-method-and-show-params,-return-value-and-exceptions)
+ - [Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
 
 ## Specification
 
