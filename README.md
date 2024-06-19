@@ -2,12 +2,13 @@
 This is an overview of the [Arthas](https://github.com/alibaba/arthas) tool, which is a complete set of diagnostic tools to troubleshoot JVM issues on the fly.
 
  
- - [Introduction](#introduction) 
- - [Typical USE CASES](#typical-use-cases)
+ - [Introduction](#introduction)
+ - 
+ - [Typical USE CASES](#typical-use-cases):
      - [Change CLASS definition on the fly](#change-class-definition-on-the-fly)
      - [Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
-       Using Arthas in Kubernetes
- - [Using Arthas in Kubernetes](#Using-arthas-in-kubernetes)
+ 
+ - [Using Arthas in Kubernetes](#using-arthas-in-kubernetes)
 
 ## Specification
 
