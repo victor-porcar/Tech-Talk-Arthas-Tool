@@ -47,9 +47,16 @@ time       2024-06-06 10:12:27
 ```
 Then from the console you can use the Arthas commands
 
-NOTE: **Once we have finished our work, it is very important to CLOSE the arthas console by using command `stop`**
+NOTE: **Once we have finished our work in Arthas, it is very important to CLOSE it console by using command `stop`**
 <br/><br/>
+```
+[arthas@299291]$ stop
+Resetting all enhanced classes ...
+Affect(class count: 0 , method count: 0) cost in 1 ms, listenerId: 0
+Arthas Server is going to shutdown...
+[arthas@299291]$ session (c0138352-a90e-4d55-b3d0-a8fb5aafda65) is closed because server is going to shutdown.
 
+``` 
 
 ## Typical USE CASES
 
