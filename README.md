@@ -72,7 +72,7 @@ Arthas Server is going to shutdown...
 In order to change the definition of a class on the fly, Arthas offers command `retransform`
 
 steps:
-1) regenerate the new version of class file using your IDE locally. If that is not possible, then generate new artifact as rar and unzipped it to find the corresponding class file.
+1) regenerate the new version of the class you wish to change using your IDE locally. If that is not possible, then generate new artifact as rar and unzipped it to find the corresponding class file.
 2) copy class file in any working folder locally
 3) execute Arthas -> `java -jar arthas-boot.jar` and use the command retransform
 ```
