@@ -3,7 +3,7 @@ This is a cheat sheet for the [Arthas](https://github.com/alibaba/arthas) tool
 
  
  - [Introduction](#introduction) 
- - [Dependencies Title](#dependencies-title) 
+ - [Typical USE CASES](## Typical-USE-CASES) 
 
 ## Specification
 
