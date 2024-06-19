@@ -149,7 +149,8 @@ steps:
 ```
 retransform <WORKING_FOLDER>/MyClass.class
 ```
-NOTE 1: the new version of the class can not have more methods that the original and can not change their signatures, in other words, it is allowed to change the "body" of the methods
+NOTE 1: the new version of the class can not have more methods that the original and can not change their signatures, in other words, it is allowed to change the "body" of the methods.
+
 NOTE 2: A very straightforward use of this is to add more log to investigate potential errors, or even catch exceptions
 
 
