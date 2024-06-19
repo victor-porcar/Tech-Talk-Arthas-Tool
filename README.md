@@ -5,9 +5,9 @@ This is an overview of the [Arthas](https://github.com/alibaba/arthas) tool, whi
  - [Introduction](#introduction)
  - [Typical USE CASES](#typical-use-cases):
      - [Change CLASS definition on the fly](#change-class-definition-on-the-fly)
-     - [Kubernetes Change CLASS definition on the fly](#kubernetes-change-class-definition-on-the-fly)
+     	- [Kubernetes Change CLASS definition on the fly](#kubernetes-change-class-definition-on-the-fly)
      - [Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
-     - [Kubernetes Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#kubernetes-intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
+     	- [Kubernetes Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#kubernetes-intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
  
  - [Using Arthas in Kubernetes](#using-arthas-in-kubernetes)
 
@@ -86,7 +86,7 @@ retransform <WORKING_FOLDER>/MyClass.class
 <br/>
 `retransform error! java.lang.UnsupportedOperationException: class redefinition failed: attempted to add a method`
 
-### Kubernetes Change CLASS definition on the fly
+#### Kubernetes Change CLASS definition on the fly
  
 ### Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS
 
@@ -163,7 +163,7 @@ ts=2024-06-05 13:45:42; [cost=0.037923ms] result=@ArrayList[
 watch tv.mirada.iris.user.profile.Test httpClient '{params[0],params[1],returnObj,throwExp}'  'params[0] eq 1100009' -x 2
 ```
 
-### Kubernetes Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS
+#### Kubernetes Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS
 
 
 
