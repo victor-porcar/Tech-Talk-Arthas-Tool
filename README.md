@@ -83,10 +83,7 @@ retransform <WORKING_FOLDER>/MyClass.class
 *NOTE:* the new version of the class can not have more methods that the original and can not change their signatures, in other words, it is allowed to change only the "body" of the methods, otherwise a exception like this would happen:
 <br/>
 `retransform error! java.lang.UnsupportedOperationException: class redefinition failed: attempted to add a method`
-
-#### Kubernetes
  
-
 ### Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS
 
 Before explaining how to do it using command WATCH, it is worth to mention that params, return value and exceptions can be examined by adding proper log lines using the previous technique to change class definition "on the fly".
