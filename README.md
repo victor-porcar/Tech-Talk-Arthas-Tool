@@ -4,7 +4,8 @@ This is a cheat sheet for the [Arthas](https://github.com/alibaba/arthas) tool
  
  - [Introduction](#introduction) 
  - [Typical USE CASES](#typical-use-cases)
- - [Change CLASS definition on the fly](#Change-class-definition-on-the-fly)
+ - [Change CLASS definition on the fly](#change-class-definition-on-the-fly)
+ - [Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#intercept-calls-to-a-method-and-show-params,-return-value-and-exceptions)
 
 ## Specification
 
@@ -79,15 +80,12 @@ steps:
 ```
 retransform <WORKING_FOLDER>/MyClass.class
 ```
-NOTE 1: the new version of the class can not have more methods that the original and can not change their signatures, in other words, it is allowed to change only the "body" of the methods, otherwise a exception like this would happen:
+*NOTE:* the new version of the class can not have more methods that the original and can not change their signatures, in other words, it is allowed to change only the "body" of the methods, otherwise a exception like this would happen:
 <br/>
 `retransform error! java.lang.UnsupportedOperationException: class redefinition failed: attempted to add a method`
-
-NOTE 2: A very straightforward use of this is to add more log to investigate potential errors, or even catch exceptions
-
  
 
-### Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS (if thrown) using command WATCH
+### Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS
 
 Before explaining how to do it using command WATCH, it is worth to mention that params, return value and exceptions can be examined by adding proper log lines using the previous technique to change class definition "on the fly".
 
