@@ -153,5 +153,7 @@ NOTE 1: the new version of the class can not have more methods that the original
 
 NOTE 2: A very straightforward use of this is to add more log to investigate potential errors, or even catch exceptions
 
+## Using Arthas in Kubernetes
+
 
 
