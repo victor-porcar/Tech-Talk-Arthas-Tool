@@ -1,6 +1,13 @@
 # Arthas Cheatsheet
 This is a cheat sheet for the [Arthas](https://github.com/alibaba/arthas) tool 
 
+ 
+ - [Introduction](#introduction) 
+ - [Dependencies Title](#dependencies-title) 
+
+## Specification
+
+
 ## Introduction
 
 [Arthas](https://github.com/alibaba/arthas) is a complete set of diagnostic tools to troubleshoot JVM issues on the fly.  
@@ -60,9 +67,32 @@ Arthas Server is going to shutdown...
 
 ## Typical USE CASES
 
-### Command WATCH: Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS (if thrown)
 
-Let's suposse there is a function in class (com.test.MyClass) which is called from time to time
+
+### Change CLASS definition "on the fly" using command retransform
+
+In order to change the definition of a class on the fly, Arthas offers command `retransform`
+
+steps:
+1) regenerate the new version of class file using your IDE locally. If that is not possible, then generate new artifact as rar and unzipped it to find the corresponding class file.
+2) copy class file in any working folder locally
+3) execute Arthas -> `java -jar arthas-boot.jar` and use the command retransform
+```
+retransform <WORKING_FOLDER>/MyClass.class
+```
+NOTE 1: the new version of the class can not have more methods that the original and can not change their signatures, in other words, it is allowed to change only the "body" of the methods, otherwise a exception like this would happen:
+<br/>
+`retransform error! java.lang.UnsupportedOperationException: class redefinition failed: attempted to add a method`
+
+NOTE 2: A very straightforward use of this is to add more log to investigate potential errors, or even catch exceptions
+
+ 
+
+### Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS (if thrown) using command WATCH
+
+Before explaining how to do it using command WATCH, it is worth to mention that params, return value and exceptions can be examined by adding proper log lines using the previous technique to change class definition "on the fly".
+
+Now, let's see how to do it using command WATCH: let's suposse there is a function in class (com.test.MyClass) which is called from time to time
 
 ```java
 
@@ -146,19 +176,6 @@ TODO
 TODO
 
 
-### Change class "on the fly"
-In order to change the definition of a class on the fly, Arthas offers command `retransform`
-
-steps:
-1) regenerate the new version of class file using your IDE locally. If that is not possible, then generate new artifact as rar and unzipped it to find the corresponding class file.
-2) copy class file in any working folder locally
-3) execute Arthas -> `java -jar arthas-boot.jar` and use the command retransform
-```
-retransform <WORKING_FOLDER>/MyClass.class
-```
-NOTE 1: the new version of the class can not have more methods that the original and can not change their signatures, in other words, it is allowed to change the "body" of the methods.
-
-NOTE 2: A very straightforward use of this is to add more log to investigate potential errors, or even catch exceptions
 
 ## Using Arthas in Kubernetes
 
