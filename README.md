@@ -1,5 +1,5 @@
 # Arthas Cheatsheet
-This is a cheat sheet for the [Arthas](https://github.com/alibaba/arthas) tool, which is a complete set of diagnostic tools to troubleshoot JVM issues on the fly.
+This is a overview of the [Arthas](https://github.com/alibaba/arthas) tool, which is a complete set of diagnostic tools to troubleshoot JVM issues on the fly.
 
  
  - [Introduction](#introduction) 
