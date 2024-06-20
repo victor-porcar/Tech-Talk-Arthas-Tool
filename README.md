@@ -65,7 +65,7 @@ time       2024-06-06 10:12:27
 ```
 Then from the console you can use the Arthas commands
 
-NOTE: **Once we have finished our work in Arthas, it is very important to CLOSE it console by using command `stop`**
+NOTE: **Once we have finished our work in Arthas, it is very important to CLOSE its process by using command `stop`**
 <br/><br/>
 ```
 [arthas@299291]$ stop
@@ -76,7 +76,7 @@ Arthas Server is going to shutdown...
 
 ```
 
-If the **stop** command can not be applied, Arthas can be closed manually by killing its java process
+If the **stop** command can not be applied for any reason, Arthas can be closed manually by killing its process
  
 ```
 ps -ef | grep 'java -jar arthas-boot.jar'
