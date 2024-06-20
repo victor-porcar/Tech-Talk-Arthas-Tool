@@ -80,13 +80,18 @@ steps:
 2) copy class file in any working folder locally
 3) execute Arthas -> `java -jar arthas-boot.jar` and use the command retransform
 ```
-retransform <WORKING_FOLDER>/MyClass.class
+[arthas@10]$ retransform <WORKING_FOLDER>/MyClass.class
 ```
 *NOTE:* the new version of the class can not have more methods that the original and can not change their signatures, in other words, it is allowed to change only the "body" of the methods, otherwise a exception like this would happen:
 <br/>
 `retransform error! java.lang.UnsupportedOperationException: class redefinition failed: attempted to add a method`
 
 #### Kubernetes Change CLASS definition on the fly
+Use the kubernetes scripts as follows:
+```
+kubernetes_file_upload.sh <WORKING_FOLDER>/MyClass.class <POD_NAME_PATTERN> /tmp
+kubernetes_artha_execution.sh <POD_NAME_PATTERN> retransform /tmp/MyClass.class
+```
  
 ### Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS
 
