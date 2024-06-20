@@ -9,7 +9,7 @@ This is an overview of the [Arthas](https://github.com/alibaba/arthas) tool, whi
      - [Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
      	- [Kubernetes Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#kubernetes-intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
  
- - [Using Arthas in Kubernetes](#using-arthas-in-kubernetes)
+ - [Kubernetes Scripts](#kubernetes-scripts)
 
 ## Specification
 
@@ -184,7 +184,7 @@ TODO
 
 
 
-## Using Arthas in Kubernetes
+## Kubernetes Scripts
 
 
 
