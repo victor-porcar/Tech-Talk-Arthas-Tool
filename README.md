@@ -186,5 +186,29 @@ TODO
 
 ## Kubernetes Scripts
 
+Execute Arthas command in all pods matching name
+```
+#!/bin/bash
+
+PID_JAVA_SERVICE=$( ps -ef | grep -v "grep java" | grep -v "arthas-boot" | grep java | awk '{print $1}')
+#PID_JAVA_SERVICE="(jps -l | grep org | cut -f1 -d' ')"
+
+
+ARTHAS_COMMAND="options strict false;vmtool --action getInstances -className tv.mirada.iris.tvinfo.service.ConcurrencyWatcher --express "instances[0].inProgress=false";stop"
+
+POD_NAMES=$( kubectl get pods -o=name   | grep -P 'sdp-ci-service-search-service-powersearch' | sed 's/^.\{4\}//' )
+
+echo "Aplying Arthas to the following PODS"
+echo $POD_NAMES  | tr ' ' '\n'  
+
+
+#kubectl cp -n <namespace> <source> <pod-name>:<path>
+
+
+echo $POD_NAMES | tr ' ' '\n' | xargs -tI{} kubectl exec {} -- bash -c "curl -O https://arthas.aliyun.com/arthas-boot.jar; java -jar arthas-boot.jar -c '$ARTHAS_COMMAND' \$$PID_JAVA_SERVICE" 
+
+
+```
+
 
 
