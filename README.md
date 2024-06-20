@@ -92,9 +92,9 @@ kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "retransform /tmp/MyClass.cl
  
 ### Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS
 
-Before explaining how to do it using command WATCH, it is worth to mention that params, return value and exceptions can be examined by adding proper log lines using the previous technique to change class definition "on the fly".
+Before explaining how to do it using command watch, it is worth to mention that params, return value and exceptions can be examined by adding proper log lines using the previous technique to change class definition "on the fly".
 
-Now, let's see how to do it using command WATCH: let's suposse there is a function in class (com.test.MyClass) which is called from time to time
+Now, let's see how to do it using command [watch](https://arthas.aliyun.com/en/doc/watch.html): let's suposse there is a function in class (com.test.MyClass) which is called from time to time
 
 ```java
 
