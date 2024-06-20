@@ -74,7 +74,16 @@ Affect(class count: 0 , method count: 0) cost in 1 ms, listenerId: 0
 Arthas Server is going to shutdown...
 [arthas@299291]$ session (c0138352-a90e-4d55-b3d0-a8fb5aafda65) is closed because server is going to shutdown.
 
-``` 
+```
+
+If the **stop** command can not be applied, Arthas can be closed manually by killing its java process
+ 
+```
+ps -ef | grep 'java -jar arthas-boot.jar'
+kill <PID> 
+```
+
+
 
 ## Typical Use Cases
 
@@ -183,12 +192,7 @@ Use the kubernetes scripts as follows:
 ```
 kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "watch com.test.MyClass myMethod '{params[0],params[1],returnObj,throwExp}' -x 2"
 ```
-This command will leave opened the arthas console showing the invocations call to the method. To abort it is necessary to Press Q or Ctrl+C to abort, but this will leave opened the arthas agent, to stop it manually find the arthas process and kill it
-```
-ps -ef | grep 'java -jar arthas-boot.jar'
-kill <PID> 
-```
-
+This command will leave opened the arthas console showing the invocations call to the method. To abort it is necessary to close it manually as explained in introduction
 
 
 
