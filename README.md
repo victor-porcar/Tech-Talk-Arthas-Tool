@@ -10,6 +10,8 @@ The doc is available [here](https://arthas.aliyun.com/en/doc)
      	- [Kubernetes Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#kubernetes-intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
      - [Set instance variable value](#set-instance-variable-value)  
      	- [Kubernetes Set instance variable value](#kubernetes-set-instance-variable-value)  
+     - [Force GC](#force-gc)  
+     	- [Kubernetes Force GC](#kubernetes-force-gc)  
 
  
 
@@ -200,6 +202,23 @@ The command vmtool allows to change the value of this attribute
 Use the kubernetes scripts as follows:
 ```
 kubernetes_artha_execution.sh "<POD_NAME_PATTERN>" "options strict false;vmtool --action getInstances -className com.test.MyClass --express "instances[0].inProgress=false";stop"
+```
+
+### Force GC
+
+Let's assume there is an instance variable called "inProgress" in class com.test.MyClass and assume there is only one instance
+of this class (singleton)
+
+The command vmtool allows to change the value of this attribute
+ 
+```
+[arthas@10]$ vmtool --action forceGc
+[arthas@10]$ stop
+```
+#### Kubernetes Force GC
+Use the kubernetes scripts as follows:
+```
+kubernetes_artha_execution.sh "<POD_NAME_PATTERN>" "vmtool --action forceGc;stop"
 ```
 
 
