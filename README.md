@@ -11,7 +11,6 @@ This is an overview of the [Arthas](https://github.com/alibaba/arthas) tool, whi
  
  - [Kubernetes Scripts](#kubernetes-scripts)
 
-## Specification
 
 
 ## Introduction
