@@ -229,11 +229,11 @@ Let's assume there is an instance of class com.test.MyClass and assume which hav
 The command vmtool allows to  invoke that method
  
 ```
-[arthas@10]$ vmtool --action getInstances  --className tcom.test.MyClass --express 'instances[0].go()'
+[arthas@10]$ vmtool --action getInstances  --className tcom.test.MyClass --express instances[0].go()
 [arthas@10]$ stop
 ```
 #### Kubernetes Invoke method of Instance
 Use the kubernetes scripts as follows:
 ```
-kubernetes_artha_execution.sh "<POD_NAME_PATTERN>" "vmtool --action getInstances  --className tcom.test.MyClass --express 'instances[0].go()';stop"
+kubernetes_artha_execution.sh "<POD_NAME_PATTERN>" "vmtool --action getInstances  --className tcom.test.MyClass --express instances[0].go();stop"
 ```
