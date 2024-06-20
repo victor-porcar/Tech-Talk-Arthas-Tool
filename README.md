@@ -73,7 +73,7 @@ Arthas Server is going to shutdown...
 
 ### Change CLASS definition on the fly
 
-In order to change the definition of a class on the fly, Arthas offers command `retransform`
+In order to change the definition of a class on the fly, Arthas offers command [`retransform`](https://arthas.aliyun.com/en/doc/retransform.html)
 
 steps:
 1) regenerate the new version of the class you wish to change using your IDE locally. If that is not possible, then generate new artifact as rar and unzipped it to find the corresponding class file.
