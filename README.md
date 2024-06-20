@@ -181,9 +181,13 @@ ts=2024-06-05 13:45:42; [cost=0.037923ms] result=@ArrayList[
 #### Kubernetes Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS
 Use the kubernetes scripts as follows:
 ```
-kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "watch com.test.MyClass myMethod '{params[0],params[1],returnObj,throwExp}' -x 2;stop"
+kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "watch com.test.MyClass myMethod '{params[0],params[1],returnObj,throwExp}' -x 2"
 ```
-
+This command will leave opened the arthas console showing the invocations call to the method. To abort it is necessary to Press Q or Ctrl+C to abort, but this will leave opened the arthas agent, to stop it manually find the arthas process and kill it
+```
+ps -ef | grep 'java -jar arthas-boot.jar'
+kill <PID> 
+```
 
 
 
