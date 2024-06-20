@@ -77,10 +77,10 @@ In order to change the definition of a class on the fly, Arthas offers command [
 
 steps:
 1) regenerate the new version of the class you wish to change using your IDE locally. If that is not possible, then generate new artifact as rar and unzipped it to find the corresponding class file.
-2) copy class file in any working folder locally
+2) copy class file in any working local folder
 3) execute Arthas -> `java -jar arthas-boot.jar` and use the command retransform
 ```
-[arthas@10]$ retransform <WORKING_FOLDER>/MyClass.class
+[arthas@10]$ retransform <LOCAL_FOLDER>/MyClass.class
 ```
 *NOTE:* the new version of the class can not have more methods that the original and can not change their signatures, in other words, it is allowed to change only the "body" of the methods, otherwise a exception like this would happen:
 <br/>
@@ -89,8 +89,8 @@ steps:
 #### Kubernetes Change CLASS definition on the fly
 Use the kubernetes scripts as follows:
 ```
-kubernetes_file_upload.sh <WORKING_FOLDER>/MyClass.class <POD_NAME_PATTERN> /tmp
-kubernetes_artha_execution.sh <POD_NAME_PATTERN> retransform /tmp/MyClass.class
+kubernetes_file_upload.sh "<LOCAL_FOLDER>/MyClass.class" "<POD_NAME_PATTERN>" "/tmp"
+kubernetes_artha_execution.sh "<POD_NAME_PATTERN>" "retransform /tmp/MyClass.class"
 ```
  
 ### Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS
@@ -169,7 +169,10 @@ watch tv.mirada.iris.user.profile.Test httpClient '{params[0],params[1],returnOb
 ```
 
 #### Kubernetes Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS
-
+Use the kubernetes scripts as follows:
+```
+kubernetes_artha_execution.sh "<POD_NAME_PATTERN>" "watch com.test.MyClass myMethod '{params[0],params[1],returnObj,throwExp}' -x 2"
+```
 
 
 
