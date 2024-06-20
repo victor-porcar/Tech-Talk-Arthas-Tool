@@ -8,6 +8,12 @@ The doc is available [here](https://arthas.aliyun.com/en/doc)
      	- [Kubernetes Change CLASS definition on the fly](#kubernetes-change-class-definition-on-the-fly)
      - [Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
      	- [Kubernetes Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#kubernetes-intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
+     - [Set instance variable value](#set-instance-variable-value)  
+     	- [Kubernetes Set instance variable value](#kubernetes-set-instance-variable-value)  
+
+ 
+
+
 <br/>
 <br/>
  
