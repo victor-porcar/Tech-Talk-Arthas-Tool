@@ -10,7 +10,7 @@ This is an overview of the [Arthas](https://github.com/alibaba/arthas) tool, whi
      	- [Kubernetes Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#kubernetes-intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
 <br/>
 <br/>
-<br/>
+ 
 ## Introduction
  
 In order to use it, download it and execute it in any environment running a JVM
