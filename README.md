@@ -13,7 +13,7 @@ The doc is available [here](https://arthas.aliyun.com/en/doc)
      - [Force GC](#force-gc)  
      	- [Kubernetes Force GC](#kubernetes-force-gc)  
      - [Invoke method of Instance](#invoke-method-of-instance)  
-     	- [Kubernetes Invoke method of Instance](#invoke-invoke-method-of-instance)  
+     	- [Kubernetes Invoke method of Instance](#kubernetes-invoke-method-of-instance)  
  
 
 
