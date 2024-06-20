@@ -90,7 +90,7 @@ steps:
 Use the kubernetes scripts as follows:
 ```
 kubernetes_file_upload.sh "<LOCAL_FOLDER>/MyClass.class" "<POD_NAME_PATTERN>" "/tmp"
-kubernetes_artha_execution.sh "<POD_NAME_PATTERN>" "retransform /tmp/MyClass.class"
+kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "retransform /tmp/MyClass.class"
 ```
  
 ### Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS
