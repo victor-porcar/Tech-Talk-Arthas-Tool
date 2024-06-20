@@ -12,7 +12,8 @@ The doc is available [here](https://arthas.aliyun.com/en/doc)
      	- [Kubernetes Set instance variable value](#kubernetes-set-instance-variable-value)  
      - [Force GC](#force-gc)  
      	- [Kubernetes Force GC](#kubernetes-force-gc)  
-
+     - [Invoke method of Instance](#invoke-method-of-instance)  
+     	- [Kubernetes Invoke method of Instance](#invoke-execute-method-of-instance)  
  
 
 
@@ -221,14 +222,18 @@ Use the kubernetes scripts as follows:
 kubernetes_artha_execution.sh "<POD_NAME_PATTERN>" "vmtool --action forceGc;stop"
 ```
 
+### Invoke method of Instance
 
+Let's assume there is an instance of class com.test.MyClass and assume which have a public method go() and let's assume that there is only one instanceof this class (singleton)
 
-### ver tiempos de ejecución de un metodo
-TODO
-
-
-### invocar un metodo (instancia o clase)
-TODO
-
-
-
+The command vmtool allows to  invoke that method
+ 
+```
+[arthas@10]$ vmtool --action getInstances  --className com.test.MyClass --express "instances[0].go()"
+[arthas@10]$ stop
+```
+#### Kubernetes Invoke method of Instance
+Use the kubernetes scripts as follows:
+```
+kubernetes_artha_execution.sh "<POD_NAME_PATTERN>" "vmtool --action getInstances  --className com.test.MyClass --express "instances[0].go()";stop"
+```
