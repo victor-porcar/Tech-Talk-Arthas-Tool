@@ -8,10 +8,6 @@ This is an overview of the [Arthas](https://github.com/alibaba/arthas) tool, whi
      	- [Kubernetes Change CLASS definition on the fly](#kubernetes-change-class-definition-on-the-fly)
      - [Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
      	- [Kubernetes Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#kubernetes-intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
- 
- - [Kubernetes Scripts](#kubernetes-scripts)
-
-
 
 ## Introduction
  
