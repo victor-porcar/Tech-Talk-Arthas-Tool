@@ -78,6 +78,7 @@ steps:
 3) execute Arthas -> `java -jar arthas-boot.jar` and use the command retransform
 ```
 [arthas@10]$ retransform <LOCAL_FOLDER>/MyClass.class
+[arthas@10]$ stop
 ```
 *NOTE:* the new version of the class can not have more methods that the original and can not change their signatures, in other words, it is allowed to change only the "body" of the methods, otherwise a exception like this would happen:
 <br/>
@@ -87,7 +88,7 @@ steps:
 Use the kubernetes scripts as follows:
 ```
 kubernetes_file_upload.sh "<LOCAL_FOLDER>/MyClass.class" "<POD_NAME_PATTERN>" "/tmp"
-kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "retransform /tmp/MyClass.class"
+kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "retransform /tmp/MyClass.class;stop"
 ```
  
 ### Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS
@@ -111,7 +112,8 @@ Now, let's see how to do it using command [watch](https://arthas.aliyun.com/en/d
 The following Arthas command will show for each invocation (grouped in seconds) all the params, returned object and exception (if exist) 
 
 ```
-watch com.test.MyClass myMethod '{params[0],params[1],returnObj,throwExp}' -x 2
+[arthas@10]$ watch com.test.MyClass myMethod '{params[0],params[1],returnObj,throwExp}' -x 2
+[arthas@10]$ stop
 ```
 where in this case:
 
@@ -162,21 +164,37 @@ ts=2024-06-05 13:45:42; [cost=0.037923ms] result=@ArrayList[
 ```
  In order to intercept only when a condition is matched (in this case first parameter "customer" equals to "1100009"
 ```
-watch tv.mirada.iris.user.profile.Test httpClient '{params[0],params[1],returnObj,throwExp}'  'params[0] eq 1100009' -x 2
+[arthas@10]$ watch com.test.MyClass myMethod '{params[0],params[1],returnObj,throwExp}'  'params[0] eq 1100009' -x 2
+[arthas@10]$ stop
 ```
 
 #### Kubernetes Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS
 Use the kubernetes scripts as follows:
 ```
-kubernetes_artha_execution.sh "<POD_NAME_PATTERN>" "watch com.test.MyClass myMethod '{params[0],params[1],returnObj,throwExp}' -x 2"
+kubernetes_artha_execution.sh "<POD_NAME_PATTERN>" "watch com.test.MyClass myMethod '{params[0],params[1],returnObj,throwExp}' -x 2;stop"
 ```
 
 
 
 
 
-### ver variable de una clase (singleton) o instancia (buscar la instancia de la clase)
-TODO
+### Set instance variable value
+
+Let's assume there is an instance variable called "inProgress" in class com.test.MyClass and assume there is only one instance
+of this class (singleton)
+
+The command vmtool allows to change the value of this attribute
+ 
+```
+[arthas@10]$ options strict false
+[arthas@10]$ vmtool --action getInstances -className com.test.MyClass --express "instances[0].inProgress=false"
+[arthas@10]$ stop
+```
+#### Kubernetes Set instance variable value
+Use the kubernetes scripts as follows:
+```
+kubernetes_artha_execution.sh "<POD_NAME_PATTERN>" "options strict false;vmtool --action getInstances -className com.test.MyClass --express "instances[0].inProgress=false";stop"
+```
 
 
 
