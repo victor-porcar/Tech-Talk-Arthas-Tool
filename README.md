@@ -197,13 +197,13 @@ The command vmtool allows to change the value of this attribute
  
 ```
 [arthas@10]$ options strict false
-[arthas@10]$ vmtool --action getInstances -className com.test.MyClass --express "instances[0].inProgress=false"
+[arthas@10]$ vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress=false
 [arthas@10]$ stop
 ```
 #### Kubernetes Set instance variable value
 Use the kubernetes scripts as follows:
 ```
-kubernetes_artha_execution.sh "<POD_NAME_PATTERN>" "options strict false;vmtool --action getInstances -className com.test.MyClass --express "instances[0].inProgress=false";stop"
+kubernetes_artha_execution.sh "<POD_NAME_PATTERN>" "options strict false;vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress=false;stop"
 ```
 
 ### Force GC
