@@ -181,7 +181,7 @@ ts=2024-06-05 13:45:42; [cost=0.037923ms] result=@ArrayList[
 #### Kubernetes Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS
 Use the kubernetes scripts as follows:
 ```
-kubernetes_artha_execution.sh "<POD_NAME_PATTERN>" "watch com.test.MyClass myMethod '{params[0],params[1],returnObj,throwExp}' -x 2;stop"
+kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "watch com.test.MyClass myMethod '{params[0],params[1],returnObj,throwExp}' -x 2;stop"
 ```
 
 
@@ -203,7 +203,7 @@ The command vmtool allows to change the value of this attribute
 #### Kubernetes Set instance variable value
 Use the kubernetes scripts as follows:
 ```
-kubernetes_artha_execution.sh "<POD_NAME_PATTERN>" "options strict false;vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress=false;stop"
+kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "options strict false;vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress=false;stop"
 ```
 
 ### Force GC
@@ -220,7 +220,7 @@ The command vmtool allows to change the value of this attribute
 #### Kubernetes Force GC
 Use the kubernetes scripts as follows:
 ```
-kubernetes_artha_execution.sh "<POD_NAME_PATTERN>" "vmtool --action forceGc;stop"
+kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "vmtool --action forceGc;stop"
 ```
 
 ### Invoke method of Instance
