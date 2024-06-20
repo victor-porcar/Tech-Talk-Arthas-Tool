@@ -39,7 +39,7 @@ case "$response" in
 
     [yY][eE][sS]|[yY]) 
         echo $POD_NAMES | tr ' ' '\n' | xargs -tI{} kubectl exec {} -- bash -c \
-        "curl -O https://arthas.aliyun.com/arthas-boot.jar; java -jar arthas-boot.jar -c '$ARTHAS_COMMAND' \$($PID_JAVA_SERVICE)" 
+        "curl -O https://arthas.aliyun.com/arthas-boot.jar; java -jar arthas-boot.jar -c \"$ARTHAS_COMMAND\" \$($PID_JAVA_SERVICE)" 
 
         echo "The Arthas command was applied."
         ;;
