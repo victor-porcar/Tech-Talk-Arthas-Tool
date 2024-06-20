@@ -244,5 +244,5 @@ The command vmtool allows to  invoke that method
 #### Kubernetes Invoke method of Instance
 Use the kubernetes scripts as follows:
 ```
-kubernetes_artha_execution.sh "<POD_NAME_PATTERN>" "vmtool --action getInstances  --className tcom.test.MyClass --express instances[0].go();stop"
+kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "vmtool --action getInstances  --className tcom.test.MyClass --express instances[0].go();stop"
 ```
