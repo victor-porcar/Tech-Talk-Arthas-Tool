@@ -9,14 +9,12 @@ The doc is available [here](https://arthas.aliyun.com/en/doc)<br/>
      	- [Kubernetes Change CLASS definition on the fly](#kubernetes-change-class-definition-on-the-fly)
      - [Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
      	- [Kubernetes Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#kubernetes-intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
-     - [Set instance variable value](#set-instance-variable-value)  
-     	- [Kubernetes Set instance variable value](#kubernetes-set-instance-variable-value)  
+     - [Set variable value of an instance](#set-variable-value-of-an-instance)  
+     	- [Kubernetes Set variable value of an instance](#kubernetes-set-variable-value-of-an-instance)  
+     - [Invoke method of an instance](#invoke-method-of-an-instance)  
+     	- [Kubernetes Invoke method of an instance](#kubernetes-invoke-method-of-an-instance)  
      - [Force GC](#force-gc)  
      	- [Kubernetes Force GC](#kubernetes-force-gc)  
-     - [Invoke method of Instance](#invoke-method-of-instance)  
-     	- [Kubernetes Invoke method of Instance](#kubernetes-invoke-method-of-instance)  
- 
-
 
 <br/>
 <br/>
@@ -196,7 +194,7 @@ This command will leave opened the arthas console showing the invocations call t
 
 
 
-### Set instance variable value
+### Set variable value of an instance
 
 Let's assume there is an instance variable called "inProgress" in class com.test.MyClass and assume there is only one instance
 of this class (singleton)
@@ -208,11 +206,30 @@ The command vmtool allows to change the value of this attribute
 [arthas@10]$ vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress=false
 [arthas@10]$ stop
 ```
-#### Kubernetes Set instance variable value
+#### Kubernetes Set variable value of an instance
 Use the kubernetes scripts as follows:
 ```
 kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "options strict false;vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress=false;stop"
 ```
+
+
+### Invoke method of an instance
+
+Let's assume there is an instance of class com.test.MyClass and assume which have a public method go() and let's assume that there is only one instanceof this class (singleton)
+
+The command vmtool allows to  invoke that method
+ 
+```
+[arthas@10]$ vmtool --action getInstances  --className tcom.test.MyClass --express instances[0].go()
+[arthas@10]$ stop
+```
+#### Kubernetes Invoke method of an instance
+Use the kubernetes scripts as follows:
+```
+kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "vmtool --action getInstances  --className tcom.test.MyClass --express instances[0].go();stop"
+```
+
+
 
 ### Force GC
  
@@ -226,20 +243,4 @@ The command vmtool can force the GC as follows:
 Use the kubernetes scripts as follows:
 ```
 kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "vmtool --action forceGc;stop"
-```
-
-### Invoke method of Instance
-
-Let's assume there is an instance of class com.test.MyClass and assume which have a public method go() and let's assume that there is only one instanceof this class (singleton)
-
-The command vmtool allows to  invoke that method
- 
-```
-[arthas@10]$ vmtool --action getInstances  --className tcom.test.MyClass --express instances[0].go()
-[arthas@10]$ stop
-```
-#### Kubernetes Invoke method of Instance
-Use the kubernetes scripts as follows:
-```
-kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "vmtool --action getInstances  --className tcom.test.MyClass --express instances[0].go();stop"
 ```
