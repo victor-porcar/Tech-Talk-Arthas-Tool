@@ -215,11 +215,8 @@ kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "options strict false;vmtool
 ```
 
 ### Force GC
-
-Let's assume there is an instance variable called "inProgress" in class com.test.MyClass and assume there is only one instance
-of this class (singleton)
-
-The command vmtool allows to change the value of this attribute
+ 
+The command vmtool can force the GC as follows:
  
 ```
 [arthas@10]$ vmtool --action forceGc
