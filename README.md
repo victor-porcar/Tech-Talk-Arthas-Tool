@@ -30,8 +30,7 @@ vmtool --action getInstances -className com.test.MyClass --express instances.{^ 
      - [Invoke method](#invoke-method)  
      - [Force GC](#force-gc)
      - [Profile invocation of a method](#profile-invocation-of-a-method)
- - [Appendix 1: Digging deeper in OGNL syntax](#appendix-1-digging-deeper-in-ognl-syntax) 
- - [Appendix 2:  Using Kubernetes](#appendix-2--using-kubernetes)
+ - [Appendix: Using Kubernetes](#appendix--using-kubernetes)
  
 
 <br/>
@@ -342,7 +341,8 @@ Let's suppose the static method has parameters, for example:
 the way to invoke this static method would be:
 
 `
-ognl '@com.test.MyClass@myStaticMethod({"87164","98989"}, @java.time.Instant@ofEpochSecond(1713825471), @java.time.Instant@ofEpochSecond(1713911871), false, "SPA")'
+[arthas@10]$ ognl '@com.test.MyClass@myStaticMethod({"87164","98989"}, @java.time.Instant@ofEpochSecond(1713825471), @java.time.Instant@ofEpochSecond(1713911871), false, "SPA")'
+[arthas@10]$ stop
 `
 
 
@@ -430,7 +430,7 @@ ognl '@com.test.MyClass@INSTANCE.getList().{ #this.getId()}'
 <br/>
 
 
-## Appendix 2:  Using Kubernetes
+## Appendix:  Using Kubernetes
 
 I've created a couple of scripts useful to apply Arthas in a Kubernetes environment
 
