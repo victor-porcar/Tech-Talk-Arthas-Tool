@@ -16,8 +16,8 @@ The doc is available [here](https://arthas.aliyun.com/en/doc)<br/>
      - [Inspect / Set variable value](#inspect--set-variable-value)  
      - [Invoke method](#invoke-method)  
      - [Force GC](#force-gc)
- - [Appendix 1: Digging deeper in OGNL syntax](#usage) 
- - [Appendix 2:  Using Kubernetes](#usage)
+ - [Appendix 1: Digging deeper in OGNL syntax](#appendix-1-digging-deeper-in-ognl-syntax) 
+ - [Appendix 2:  Using Kubernetes](#appendix-2--using-kubernetes)
  
 
 <br/>
