@@ -1,4 +1,4 @@
-# Tech Talk: Introduction to Arthas Toolattached
+# Tech Talk: Introduction to Arthas Tool
 
 This is an overview of the [Arthas](https://arthas.aliyun.com/en/) tool, which is a complete set of diagnostic tools to troubleshoot JVM issues on the fly. 
 
@@ -46,7 +46,7 @@ NOTE: Arthas and the JVM must be running in the same machine. It does not allow 
  
 Once attached, Arthas will offer a console to enter Arthas [commands](https://arthas.aliyun.com/en/doc/commands.html). There are more than 45 available, although in this tech talk only a small selection will be explained
 
-Besides, in this tech talk two utility files are used to work easily in Kubernetes (see its usage later):
+Besides, in this tech talk two utility files are attached to use Arthas easily in Kubernetes clusters (see its usage later):
 
 * [kubernetes_arthas_execution.sh](./kubernetes_arthas_execution.sh)
 * [kubernetes_file_upload.sh](./kubernetes_file_upload.sh)
