@@ -51,7 +51,8 @@ Besides, in this tech talk two utility files are attached to use Arthas easily i
 * [kubernetes_arthas_execution.sh](./kubernetes_arthas_execution.sh)
 * [kubernetes_file_upload.sh](./kubernetes_file_upload.sh)
 
-
+<br/>
+<br/>
  
 ## Usage
  
@@ -140,9 +141,8 @@ If the **stop** command can not be applied for any reason, Arthas can be closed 
 ps -ef | grep 'java -jar arthas-boot.jar'
 kill <PID> 
 ```
-
-
-
+<br/>
+<br/>
 ## Typical Use Cases
 
 ### Change CLASS definition on the fly
@@ -171,7 +171,8 @@ Use the kubernetes scripts as follows:
 kubernetes_file_upload.sh "<LOCAL_FOLDER>/MyClass.class" "<POD_NAME_PATTERN>" "/tmp"
 kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "retransform /tmp/MyClass.class;stop"
 ```
- 
+<br/>
+<br/>
 ### Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS
 
 Before explaining how to do it using command watch, it is worth to mention that params, return value and exceptions can be examined by adding proper log lines using the previous technique to change class definition "on the fly".
@@ -187,8 +188,6 @@ Now, let's see how to do it using command [watch](https://arthas.aliyun.com/en/d
          return sizeJoinString;
     }
 ```
-
-
 
 The following Arthas command will show for each invocation (grouped in seconds) all the params, returned object and exception (if exist) 
 
@@ -255,9 +254,8 @@ Use the kubernetes scripts as follows:
 kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "watch com.test.MyClass myMethod '{params[0],params[1],returnObj,throwExp}' -x 2"
 ```
 This command will leave opened the arthas console showing the invocations call to the method. To abort it is necessary to close it manually as explained in introduction
-
-
-
+<br/>
+<br/>
 ### Inspect / Set variable value 
 
 Let's assume there is an instance variable called "inProgress" in class com.test.MyClass and assume there is only one instance
@@ -283,16 +281,13 @@ NOTE: in the --express argument you can use any [OGNL](https://commons.apache.or
 ```
 vmtool --action getInstances -className com.test.MyClass --express instances.{^ #this.getId().equals(1)}.inProgress
 ```
-
-
-
 #### Kubernetes Inspect / Set variable value 
 Use the kubernetes scripts as follows:
 ```
 kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "options strict false;vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress=false;stop"
 ```
-
-
+<br/>
+<br/>
 ### Invoke method of an instance
 
 Let's assume there is an instance of class com.test.MyClass and assume which have a public method go() and let's assume that there is only one instanceof this class (singleton)
@@ -308,9 +303,8 @@ Use the kubernetes scripts as follows:
 ```
 kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "vmtool --action getInstances  --className tcom.test.MyClass --express instances[0].go();stop"
 ```
-
-
-
+<br/>
+<br/>
 ### Force GC
  
 The command vmtool can force the GC as follows:
