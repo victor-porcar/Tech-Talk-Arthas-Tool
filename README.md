@@ -15,7 +15,10 @@ The doc is available [here](https://arthas.aliyun.com/en/doc)<br/>
      - [Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
      - [Inspect / Set variable value](#inspect--set-variable-value)  
      - [Invoke method](#invoke-method)  
-     - [Force GC](#force-gc)  
+     - [Force GC](#force-gc)
+ - [Appendix 1: Digging deeper in OGNL syntax](#usage) 
+ - [Appendix 2:  Using Kubernetes](#usage)
+ 
 
 <br/>
 <br/>
@@ -41,13 +44,7 @@ NOTE: Arthas and the JVM must be running in the same machine. It does not allow 
  
 Once attached, Arthas will offer a console to enter Arthas [commands](https://arthas.aliyun.com/en/doc/commands.html). There are more than 45 available, although in this tech talk only a small selection will be explained
 
-Besides, in this tech talk two utility files are attached to use Arthas easily in Kubernetes clusters (see APPENDIX 1):
 
-* [kubernetes_arthas_execution.sh](./kubernetes_arthas_execution.sh)
-* [kubernetes_file_upload.sh](./kubernetes_file_upload.sh)
-
-<br/>
-<br/>
  
 ## Usage
  
@@ -264,7 +261,7 @@ SET
 [arthas@10]$ stop
 ```
 
-NOTE: in the --express argument you can use any [OGNL](https://commons.apache.org/dormant/commons-ognl/)  expression, as described in the APPENDIX section. So if we want to select an specific instance over many other, a OGNL can be used to filter over it:
+NOTE: in the --express argument you can use any [OGNL](https://commons.apache.org/dormant/commons-ognl/)  expression, as described in the APPENDIX 1 section. So if we want to select an specific instance over many other, a OGNL can be used to filter over it:
 
 ```
 vmtool --action getInstances -className com.test.MyClass --express instances.{^ #this.getId().equals(1)}.inProgress
@@ -308,7 +305,57 @@ The command vmtool can force the GC as follows:
 [arthas@10]$ vmtool --action forceGc
 [arthas@10]$ stop
 ```
- 
+
+## Appendix 1: Digging deeper in OGNL syntax
+
+Arthas uses OGNL -  Apache Commons OGNL - Language Guide for almost  all commands expressions, this means you need to use this to inspect and filter over any variable inside any object in the Java process. So requires a bit of knowledge about OGNL to perform the operation you want.
+
+The most simple example would be looking at a singleton class.
+ognl '@com.test.MyClass@INSTANCE' which follows the  @class@field syntax.
+
+You can review the OGNL specs to see more in detail how to build any ognl expression, but here is a guided example to see the difference between “traditional” Java syntax and ognl:
+ognl '@com.test.MyClass@INSTANCE.get({"87164"}, @java.time.Instant@ofEpochSecond(1713825471), @java.time.Instant@ofEpochSecond(1713911871), false, "SPA")'
+
+The get method has the following signature:
+public List<Delivery> get(List<String> channelIds, Instant start, Instant end, Boolean stbView, String lang)  
+
+As you can see to build a list you use the {} and for instantiating a java Instant you can use @java.time.Instant@ofEpochSecond(1713825471). 
+
+Now, what if we want to inspect a List with thousands of entries and want to filter by a certain condition? Or map values? 
+
+Filter
+Java code: 
+
+
+
+ INSTANCE.getList().stream()
+ .filter(element -> element.getType().equals("PRIMARY"))
+ .collect(Collectors.toList())
+Converted to OGNL syntax would be:
+
+ognl '@com.test.MyClass@INSTANCE.getList().{? #this.getType().equals("PRIMARY")}'
+
+Filter and get only first match (same as .stream().filter(...).findFirst())
+ognl '@com.test.MyClass@INSTANCE.getList().{^ #this.getType().equals("PRIMARY")}'
+
+Last match:
+ognl '@com.test.MyClass@INSTANCE.getList().{$ #this.getType().equals("PRIMARY")}'
+
+Map
+It’s possible to also map the objects from a list to other, like in .stream().map(...) method.
+
+ognl '@com.test.MyClass@INSTANCE.getList().{ #this.getId()}' 
+
+
+## Appendix 2:  Using Kubernetes
+
+ Besides, in this tech talk two utility files are attached to use Arthas easily in Kubernetes clusters (see APPENDIX 1):
+
+* [kubernetes_arthas_execution.sh](./kubernetes_arthas_execution.sh)
+* [kubernetes_file_upload.sh](./kubernetes_file_upload.sh)
+
+<br/>
+<br/>
 
 
 
