@@ -308,3 +308,6 @@ Use the kubernetes scripts as follows:
 ```
 kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "vmtool --action forceGc;stop"
 ```
+
+
+
