@@ -157,9 +157,11 @@ steps:
 [arthas@10]$ retransform <LOCAL_FOLDER>/MyClass.class
 [arthas@10]$ stop
 ```
-*NOTE:* the new version of the class can not have more methods that the original and can not change their signatures, in other words, it is allowed to change only the "body" of the methods, otherwise a exception like this would happen:
+*NOTE:* the new version of the class can not have more methods that the original and can not change their signatures. in other words, it is allowed to change only the "body" of the methods, otherwise a exception like this would happen:
 <br/>
 `retransform error! java.lang.UnsupportedOperationException: class redefinition failed: attempted to add a method`
+
+The new class can not add or delete attributes
 
 #### Kubernetes Change CLASS definition on the fly
 Use the kubernetes scripts as follows:
