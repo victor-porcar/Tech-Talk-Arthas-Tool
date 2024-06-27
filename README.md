@@ -47,7 +47,7 @@ Once attached, Arthas will offer a console to enter Arthas [commands](https://ar
 
  
 ## Usage
- 
+ FOLDER>/MyClass.class
 In order to use Arthas, download it and execute it in any environment running a JVM
 ```
 curl -O https://arthas.aliyun.com/arthas-boot.jar
@@ -137,7 +137,7 @@ kill <PID>
 <br/>
 
 ## Typical Use Cases
-
+FOLDER>/MyClass.class
 <br/>
 <br/>
 
@@ -258,7 +258,7 @@ SET
 ```
 [arthas@10]$ options strict false
 [arthas@10]$ vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress=false
-[arthas@10]$ stop
+[arthas@10]$ stopFOLDER>/MyClass.class
 ```
 
 NOTE: in the --express argument you can use any [OGNL](https://commons.apache.org/dormant/commons-ognl/)  expression, as described in the APPENDIX 1 section. So if we want to select an specific instance over many other, a OGNL can be used to filter over it:
@@ -349,10 +349,46 @@ ognl '@com.test.MyClass@INSTANCE.getList().{ #this.getId()}'
 
 ## Appendix 2:  Using Kubernetes
 
- Besides, in this tech talk two utility files are attached to use Arthas easily in Kubernetes clusters (see APPENDIX 1):
+I've created a couple of scripts useful to apply Arthas in a Kubernetes environment
 
-* [kubernetes_arthas_execution.sh](./kubernetes_arthas_execution.sh)
-* [kubernetes_file_upload.sh](./kubernetes_file_upload.sh)
+### kubernetes_arthas_execution.sh
+
+It allows to apply a Arthas command to all pods having the given <POD_NAME_PATTERN> as the beginning of its name
+
+```
+kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "<ARTHAS_COMMAND>"
+```
+
+for example, let's suppose there are the following pods:
+
+```
+$ kubectl get pods | grep "service-search"
+
+service-search-7ddffdcf5b-l9gdz           1/1     Running     0         2d19h
+service-search-587f749bbc-vlbcr           1/1     Running     0         2d19h
+
+```
+
+The following script would apply the arthas command to execute a method to both pods:
+
+```
+./scripts/kubernetes_arthas_execution.sh "service-search" "vmtool --action getInstances  --className tcom.test.MyClass --express instances[0].getList();stop"
+```
+
+### kubernetes_file_upload.sh
+
+It allows to upload a file to all pods having the given <POD_NAME_PATTERN> as the beginning of its name
+```
+./scripts/kubernetes_file_upload.sh "<LOCAL_PATH_FOR_FILE" "<POD_NAME_PATTERN>" "<POD_PATH_FOR_FILE>
+```
+
+It is useful to change class on the fly
+
+```
+kubernetes_file_upload.sh "<LOCAL_FOLDER>/MyClass.class" "<POD_NAME_PATTERN>" "/tmp"
+kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "retransform /tmp/MyClass.class;stop"
+```
+
 
 <br/>
 <br/>
