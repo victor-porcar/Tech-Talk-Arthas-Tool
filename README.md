@@ -55,7 +55,7 @@ Besides, in this tech talk two utility files are attached to use Arthas easily i
  
 ## Usage
  
-In order to use it, download it and execute it in any environment running a JVM
+In order to use Arthas, download it and execute it in any environment running a JVM
 ```
 curl -O https://arthas.aliyun.com/arthas-boot.jar
 java -jar arthas-boot.jar   
