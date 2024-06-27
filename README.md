@@ -259,7 +259,7 @@ SET
 ```
 [arthas@10]$ options strict false
 [arthas@10]$ vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress=false
-[arthas@10]$ stopFOLDER>/MyClass.class
+[arthas@10]$ stop
 ```
 
 NOTE: in the --express argument you can use any [OGNL](https://commons.apache.org/dormant/commons-ognl/)  expression, as described in the APPENDIX 1 section. So if we want to select an specific instance over many other, a OGNL can be used to filter over it:
