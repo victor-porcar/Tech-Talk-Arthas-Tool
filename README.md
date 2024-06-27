@@ -258,29 +258,49 @@ ts=2024-06-05 13:45:42; [cost=0.037923ms] result=@ArrayList[
 
 #### Instance variable
 
-Let's assume there is an instance variable called "inProgress" in class com.test.MyClass and assume there is only one instance
-of this class (singleton)
+Let's assume there is an instance variable called "inProgress" in class com.test.MyClass 
 
 The command `vmtool` allows to inspect / set the value of this attribute
 
 **INSPECT**
+
+In order to see the value of all existing instances: 
 
  ```
 [arthas@10]$ vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress
 [arthas@10]$ @Boolean[false]
 [arthas@10]$ stop
 ```
-in the previous example the value is false
 
-NOTE : in the --express argument you can use any [OGNL](https://commons.apache.org/dormant/commons-ognl/)  expression, as described in the APPENDIX 1 section. So if we want to select an specific instance over many other, a OGNL can be used to filter over it. 
+If there is only one instance, because for example a Singleton pattern has been applied, it could be achieved as follows:
+
+ ```
+[arthas@10]$ vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress
+[arthas@10]$ @Boolean[false]
+[arthas@10]$ stop
+```
+
+NOTE: in the --express argument it is used a [OGNL](https://commons.apache.org/dormant/commons-ognl/)  expression, which allows to filter the required instances.
+In this case is showing the first found.
+
+
+However, there are many scenarios in which there are many instances, in this case, filtering the required ones is necessary:
+
 <br/>
-For example to filter instances having its id equals to 1
-
+For example to filter instances of class MyClass having its getId() method returning  1
+```
+vmtool --action getInstances -className com.test.MyClass --express instances.{? #this.getId().equals(1)}.inProgress
+```
+<br/>
+Filter and get the first match
 ```
 vmtool --action getInstances -className com.test.MyClass --express instances.{^ #this.getId().equals(1)}.inProgress
 ```
-
-
+<br/>
+Filter and get the last match
+```
+vmtool --action getInstances -className com.test.MyClass --express instances.{$ #this.getId().equals(1)}.inProgress
+```
 
 **SET**
 
@@ -370,61 +390,6 @@ use command `trace`
 [arthas@10]$ stop
 ```
 ![image](./images/trace-arthas.png)
-
-<br/>
-<br/>
-
-
-
-<br/>
-<br/>
-
-## Appendix 1: Digging deeper in OGNL syntax
-
-Arthas uses Apache OGNL -  Object-Graph Navigation Language in some commands  
-
-The simplest example would be the one used for reference static variables
-
-`ognl '@com.test.MyClass@STATIC_VARIABLE' ` which follows the  @class@field syntax.
-
-You can review the [OGNL](https://commons.apache.org/dormant/commons-ognl/language-guide.html) specs to see more in detail how to build any ognl expression, but here is a guided example to see the difference between “traditional” Java syntax and ognl:
-ognl '@com.test.MyClass@INSTANCE.get({"87164"}, @java.time.Instant@ofEpochSecond(1713825471), @java.time.Instant@ofEpochSecond(1713911871), false, "SPA")'
-
-
-
-
-The get method has the following signature:
-public List<Delivery> get(List<String> channelIds, Instant start, Instant end, Boolean stbView, String lang)  
-
-As you can see to build a list you use the {} and for instantiating a java Instant you can use @java.time.Instant@ofEpochSecond(1713825471). 
-
-Now, what if we want to inspect a List with thousands of entries and want to filter by a certain condition? Or map values? 
-
-Filter
-Java code: 
-
-#### Filtering 
-
-The java filter instruction is 
-
-INSTANCE.getList().stream().filter(element -> element.getType().equals("PRIMARY")).collect(Collectors.toList())
-
-Converted to OGNL syntax would be:
-
-ognl '@com.test.MyClass@INSTANCE.getList().{? #this.getType().equals("PRIMARY")}'
-
-Filter and get only first match (same as .stream().filter(...).findFirst())
-
-ognl '@com.test.MyClass@INSTANCE.getList().{^ #this.getType().equals("PRIMARY")}'
-
-Last match:
-ognl '@com.test.MyClass@INSTANCE.getList().{$ #this.getType().equals("PRIMARY")}'
-
-Map
-It’s possible to also map the objects from a list to other, like in .stream().map(...) method.
-
-ognl '@com.test.MyClass@INSTANCE.getList().{ #this.getId()}' 
-
 
 <br/>
 <br/>
