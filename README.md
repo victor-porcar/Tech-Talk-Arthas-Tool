@@ -27,7 +27,9 @@ The doc is available [here](https://arthas.aliyun.com/en/doc)<br/>
 
 ## Introduction
 
-Arthas allows developers to troubleshoot production issues for Java applications without modifying code or restarting servers.  So it helps developers to address scenarios like the following:
+Arthas allows developers to troubleshoot production issues for Java applications without modifying code or restarting servers.</br>
+
+So it helps developers to address scenarios like the following:
 
 * There is an error in production under particular conditions, If I could add more log I would be able to see what is going on ! 
 * I believe changing this chunk of code it would resolve the issue, but I can not test it until a full release cycle is performed and that is not possible now.
