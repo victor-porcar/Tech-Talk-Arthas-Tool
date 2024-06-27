@@ -288,16 +288,19 @@ However, there are many scenarios in which there are many instances, in this cas
 
 <br/>
 For example to filter instances of class MyClass having its getId() method returning  1
+
 ```
 vmtool --action getInstances -className com.test.MyClass --express instances.{? #this.getId().equals(1)}.inProgress
 ```
 <br/>
 Filter and get the first match
+
 ```
 vmtool --action getInstances -className com.test.MyClass --express instances.{^ #this.getId().equals(1)}.inProgress
 ```
 <br/>
 Filter and get the last match
+
 ```
 vmtool --action getInstances -className com.test.MyClass --express instances.{$ #this.getId().equals(1)}.inProgress
 ```
