@@ -324,6 +324,7 @@ The command vmtool allows to invoke that method (similar to inspect/set variable
 [arthas@10]$ stop
 ```
 
+
 #### Static method
 
 Use directly ongl command
@@ -332,6 +333,17 @@ Use directly ongl command
 [arthas@10]$ ognl '@com.test.MyClass@myStaticMethod()'
 [arthas@10]$ stop
 ```
+
+
+Let's suppose the static method has parameters, for example:
+
+`public static void myStaticMethodWithParams(List<String> ids, Instant start, Instant end, Boolean stbView, String lang)`
+
+the way to invoke this static method would be:
+
+`
+ognl '@com.test.MyClass@myStaticMethod({"87164","98989"}, @java.time.Instant@ofEpochSecond(1713825471), @java.time.Instant@ofEpochSecond(1713911871), false, "SPA")'
+`
 
 
 <br/>
@@ -369,13 +381,17 @@ use command `trace`
 
 ## Appendix 1: Digging deeper in OGNL syntax
 
-Arthas uses Apache OGNL -  Object-Graph Navigation Language in some of its commands  
+Arthas uses Apache OGNL -  Object-Graph Navigation Language in some commands  
 
-The most simple example would be looking at a singleton class.
-`ognl '@com.test.MyClass@INSTANCE'` which follows the  @class@field syntax.
+The simplest example would be the one used for reference static variables
 
-You can review the OGNL specs to see more in detail how to build any ognl expression, but here is a guided example to see the difference between “traditional” Java syntax and ognl:
+`ognl '@com.test.MyClass@STATIC_VARIABLE' ` which follows the  @class@field syntax.
+
+You can review the [OGNL](https://commons.apache.org/dormant/commons-ognl/language-guide.html) specs to see more in detail how to build any ognl expression, but here is a guided example to see the difference between “traditional” Java syntax and ognl:
 ognl '@com.test.MyClass@INSTANCE.get({"87164"}, @java.time.Instant@ofEpochSecond(1713825471), @java.time.Instant@ofEpochSecond(1713911871), false, "SPA")'
+
+
+
 
 The get method has the following signature:
 public List<Delivery> get(List<String> channelIds, Instant start, Instant end, Boolean stbView, String lang)  
@@ -387,16 +403,18 @@ Now, what if we want to inspect a List with thousands of entries and want to fil
 Filter
 Java code: 
 
+#### Filtering 
 
+The java filter instruction is 
 
- INSTANCE.getList().stream()
- .filter(element -> element.getType().equals("PRIMARY"))
- .collect(Collectors.toList())
+INSTANCE.getList().stream().filter(element -> element.getType().equals("PRIMARY")).collect(Collectors.toList())
+
 Converted to OGNL syntax would be:
 
 ognl '@com.test.MyClass@INSTANCE.getList().{? #this.getType().equals("PRIMARY")}'
 
 Filter and get only first match (same as .stream().filter(...).findFirst())
+
 ognl '@com.test.MyClass@INSTANCE.getList().{^ #this.getType().equals("PRIMARY")}'
 
 Last match:
