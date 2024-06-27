@@ -281,10 +281,10 @@ in the previous example the value is false
 [arthas@10]$ @Boolean[true]
 [arthas@10]$ stop
 ```
-NOTE 1: the first command `options strict false` is necessary to set a variable value
-NOTE 2: in the --express argument you can use any [OGNL](https://commons.apache.org/dormant/commons-ognl/)  expression, as described in the APPENDIX 1 section. So if we want to select an specific instance over many other, a OGNL can be used to filter over it, example:
-
-it filters the instances having its id equals to 1
+NOTE 1: the first command `options strict false` is necessary to set a variable value<br/>
+NOTE 2: in the --express argument you can use any [OGNL](https://commons.apache.org/dormant/commons-ognl/)  expression, as described in the APPENDIX 1 section. So if we want to select an specific instance over many other, a OGNL can be used to filter over it. 
+<br/>
+For example to filter instances having its id equals to 1
 
 ```
 vmtool --action getInstances -className com.test.MyClass --express instances.{^ #this.getId().equals(1)}.inProgress
