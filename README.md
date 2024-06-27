@@ -138,7 +138,7 @@ kill <PID>
 <br/>
 
 ## Typical Use Cases
-FOLDER>/MyClass.class
+ 
 <br/>
 <br/>
 
