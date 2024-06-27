@@ -1,4 +1,4 @@
-# Tech Talk: Introduction to Arthas Tool
+# Tech Talk: Introduction to Arthas Toolattached
 
 This is an overview of the [Arthas](https://arthas.aliyun.com/en/) tool, which is a complete set of diagnostic tools to troubleshoot JVM issues on the fly. 
 
@@ -40,13 +40,13 @@ So it helps developers to address scenarios like the following:
 * I’d like to debug / profile the application while running to understand what is going on.
 
  
-Arthas process is “attached” to a given running Java application in a way that it can access and manipulate the JVM running the Java app.
-Arthas and the JVM must be running in the same machine. It does not allow to “attach” remotely.
+Arthas process is “attached” to a given running Java application in a way that it can access and manipulate the JVM running the Java app.</br>
+NOTE: Arthas and the JVM must be running in the same machine. It does not allow to “attach” remotely.
 
  
-Once attached, Arthas will offer a console to enter Arthas commands. There are more than 45 available  [commands](https://arthas.aliyun.com/en/doc/commands.html), although in this tech talk only a small selection will be explained
+Once attached, Arthas will offer a console to enter Arthas [commands](https://arthas.aliyun.com/en/doc/commands.html). There are more than 45 available, although in this tech talk only a small selection will be explained
 
-Besides, in this document two utility files are attached to use it easily in Kubernetes (see its usage later):
+Besides, in this tech talk two utility files are used to work easily in Kubernetes (see its usage later):
 
 * [kubernetes_arthas_execution.sh](./kubernetes_arthas_execution.sh)
 * [kubernetes_file_upload.sh](./kubernetes_file_upload.sh)
