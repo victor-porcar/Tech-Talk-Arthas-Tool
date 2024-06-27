@@ -143,7 +143,8 @@ kill <PID>
 ```
 <br/>
 <br/>
-## Typical Use Cases
+
+# Typical Use Cases
 
 ### Change CLASS definition on the fly
 
