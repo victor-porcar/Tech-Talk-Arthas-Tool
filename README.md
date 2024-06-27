@@ -275,7 +275,7 @@ vmtool --action getInstances -className com.test.MyClass --express instances.{^ 
 
 ### Invoke method
 
-Let's assume there is an instance of class com.test.MyClass and assume which have a public method getList() and let's assume that there is only one instanceof this class (singleton)
+Let's assume there is an instance of class com.test.MyClass and assume which have a public method `getList()` and let's assume that there is only one instanceof this class (singleton)
 
 The command vmtool allows to invoke that method (similar to inspect/set variable)
  
