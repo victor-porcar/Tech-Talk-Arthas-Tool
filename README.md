@@ -264,7 +264,8 @@ of this class (singleton)
 
 The command `vmtool` allows to inspect / set the value of this attribute
 
-***INSPECT***
+**INSPECT**
+
  ```
 [arthas@10]$ vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress
 [arthas@10]$ @Boolean[false]
@@ -272,7 +273,8 @@ The command `vmtool` allows to inspect / set the value of this attribute
 ```
 in the previous example the value is false
 
-***SET***
+**SET**
+
 ```
 [arthas@10]$ options strict false
 [arthas@10]$ vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress=false
@@ -289,7 +291,9 @@ vmtool --action getInstances -className com.test.MyClass --express instances.{^ 
 ```
 
  #### Static variable
-****INSPECT***
+ 
+**INSPECT**
+
 use @ognl expression as follows:
  ```
 [arthas@10]$ ognl '@com.test.MyClass@STATIC_VARIABLE' 
@@ -297,7 +301,7 @@ use @ognl expression as follows:
 [arthas@10]$ stop
 ```
 
-***SET***
+**SET**
 TODO
  
 <br/>
