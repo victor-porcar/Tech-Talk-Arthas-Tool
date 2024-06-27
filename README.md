@@ -252,17 +252,23 @@ The command `vmtool` allows to inspect / set the value of this attribute
 INSPECT
  ```
 [arthas@10]$ vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress
+[arthas@10]$ @Boolean[false]
 [arthas@10]$ stop
 ```
+
+in the previous example the value is false
 
 SET
 ```
 [arthas@10]$ options strict false
 [arthas@10]$ vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress=false
+[arthas@10]$ @Boolean[true]
 [arthas@10]$ stop
 ```
+NOTE 1: the first command `options strict false` is necessary to set a variable value
+NOTE 2: in the --express argument you can use any [OGNL](https://commons.apache.org/dormant/commons-ognl/)  expression, as described in the APPENDIX 1 section. So if we want to select an specific instance over many other, a OGNL can be used to filter over it, example:
 
-NOTE: in the --express argument you can use any [OGNL](https://commons.apache.org/dormant/commons-ognl/)  expression, as described in the APPENDIX 1 section. So if we want to select an specific instance over many other, a OGNL can be used to filter over it:
+it filters the instances having its id equals to 1
 
 ```
 vmtool --action getInstances -className com.test.MyClass --express instances.{^ #this.getId().equals(1)}.inProgress
