@@ -258,19 +258,35 @@ This command will leave opened the arthas console showing the invocations call t
 
 
 
-### Set variable value of an instance
+### Inspect / Set variable value 
 
 Let's assume there is an instance variable called "inProgress" in class com.test.MyClass and assume there is only one instance
 of this class (singleton)
 
-The command vmtool allows to change the value of this attribute
- 
+The command `vmtool` allows to inspect / set the value of this attribute
+
+INSPECT
+ ```
+[arthas@10]$ vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress
+[arthas@10]$ stop
+```
+
+SET
 ```
 [arthas@10]$ options strict false
 [arthas@10]$ vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress=false
 [arthas@10]$ stop
 ```
-#### Kubernetes Set variable value of an instance
+
+NOTE: in the --express argument you can use any [OGNL](https://commons.apache.org/dormant/commons-ognl/)  expression, as described in the APPENDIX section. So if we want to select an specific instance over many other, a OGNL can be used to filter over it:
+
+```
+vmtool --action getInstances -className com.test.MyClass --express instances.{^ #this.getId().equals(1)}.inProgress
+```
+
+
+
+#### Kubernetes Inspect / Set variable value 
 Use the kubernetes scripts as follows:
 ```
 kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "options strict false;vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress=false;stop"
