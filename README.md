@@ -14,7 +14,7 @@ The doc is available [here](https://arthas.aliyun.com/en/doc)<br/>
      - [Change CLASS definition on the fly](#change-class-definition-on-the-fly)
      - [Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
      - [Inspect / Set variable value](#inspect--set-variable-value)  
-     - [Invoke method of an instance](#invoke-method-of-an-instance)  
+     - [Invoke method](#invoke-method)  
      - [Force GC](#force-gc)  
 
 <br/>
@@ -273,19 +273,33 @@ vmtool --action getInstances -className com.test.MyClass --express instances.{^ 
 <br/>
 <br/>
 
-### Invoke method of an instance
+### Invoke method
 
-Let's assume there is an instance of class com.test.MyClass and assume which have a public method go() and let's assume that there is only one instanceof this class (singleton)
+Let's assume there is an instance of class com.test.MyClass and assume which have a public method getList() and let's assume that there is only one instanceof this class (singleton)
 
-The command vmtool allows to  invoke that method
+The command vmtool allows to invoke that method (similar to inspect/set variable)
  
 ```
-[arthas@10]$ vmtool --action getInstances  --className tcom.test.MyClass --express instances[0].go()
+[arthas@10]$ vmtool --action getInstances  --className tcom.test.MyClass --express instances[0].getList()
 [arthas@10]$ stop
 ```
 
 <br/>
 <br/>
+
+### Profile invocation of a method
+
+use command `trace`
+```
+[arthas@10]$ [arthas@10]$ trace com.test.MyClass getList
+[arthas@10]$ stop
+```
+![image](./images/trace-arthas.png)
+
+<br/>
+<br/>
+
+
 ### Force GC
  
 The command vmtool can force the GC as follows:
