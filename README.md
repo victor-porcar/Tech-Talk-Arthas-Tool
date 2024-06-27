@@ -255,8 +255,18 @@ INSPECT
 [arthas@10]$ @Boolean[false]
 [arthas@10]$ stop
 ```
-
 in the previous example the value is false
+
+If the variable was static, use @ognl expression as follows:
+
+ ```
+[arthas@10]$ ognl '@com.test.MyClass@STATIC_VARIABLE' 
+[arthas@10]$ @Boolean[false]
+[arthas@10]$ stop
+```
+
+
+
 
 SET
 ```
@@ -274,7 +284,7 @@ it filters the instances having its id equals to 1
 vmtool --action getInstances -className com.test.MyClass --express instances.{^ #this.getId().equals(1)}.inProgress
 ```
 
-### static fields
+ 
 
  
 <br/>
@@ -287,9 +297,17 @@ Let's assume there is an instance of class com.test.MyClass and assume which hav
 The command vmtool allows to invoke that method (similar to inspect/set variable)
  
 ```
-[arthas@10]$ vmtool --action getInstances  --className tcom.test.MyClass --express instances[0].getList()
+[arthas@10]$ vmtool --action getInstances  --className com.test.MyClass --express instances[0].getList()
 [arthas@10]$ stop
 ```
+
+If the method was static, use directly ongl command
+
+```
+[arthas@10]$ ognl '@com.test.MyClass@myStaticMethod()'
+[arthas@10]$ stop
+```
+
 
 <br/>
 <br/>
