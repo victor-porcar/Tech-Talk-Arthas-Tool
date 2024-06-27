@@ -267,6 +267,9 @@ NOTE: in the --express argument you can use any [OGNL](https://commons.apache.or
 ```
 vmtool --action getInstances -className com.test.MyClass --express instances.{^ #this.getId().equals(1)}.inProgress
 ```
+
+### static fields
+
  
 <br/>
 <br/>
@@ -317,7 +320,7 @@ use command `trace`
 
 ## Appendix 1: Digging deeper in OGNL syntax
 
-Arthas uses OGNL -  Apache Commons OGNL - Language Guide for almost all commands expressions, this means you need to use this to inspect and filter over any variable inside any object in the Java process. So requires a bit of knowledge about OGNL to perform the operation you want.
+Arthas uses Apache OGNL -  Object-Graph Navigation Language in some of its commands  
 
 The most simple example would be looking at a singleton class.
 `ognl '@com.test.MyClass@INSTANCE'` which follows the  @class@field syntax.
