@@ -32,7 +32,7 @@ Arthas allows developers to troubleshoot production issues for Java applications
 So it helps developers to address scenarios like the following:
 
 * There is an error in production under particular conditions, If I could add more log I would be able to see what is going on ! 
-* I believe changing this chunk of code it would resolve the issue, but I can not test it until a full release cycle is performed and that is not possible now.
+* I believe changing the logic in a method would fix a problem, but I can not test it until a full release cycle is performed and that is not possible now.
 * I know this method fails but in order to know why I need to know the value of the parameter passed in a particular method.
 * An instance variable value is set incorrectly, If I could change the value then I would be able to fix a potential problem.
 * I’d like to force a Garbage Collector to understand a given issue.
@@ -121,7 +121,7 @@ for example one of the simplest ones is `jvm`command that will show information 
  CLASS-PATH               ....
  
 < MORE INFORMATION .....>
-
+Change CLASS definition on the fly
 ```
 NOTE: **Once we have finished our work in Arthas, it is very important to CLOSE its process by using command `stop`**
 <br/><br/>
@@ -162,6 +162,8 @@ steps:
 `retransform error! java.lang.UnsupportedOperationException: class redefinition failed: attempted to add a method`
 
 The new class can not add or delete attributes
+
+NOTE: this technique can be useful to add more logs or change the logic of a particular method.
 
 #### Kubernetes Change CLASS definition on the fly
 Use the kubernetes scripts as follows:
