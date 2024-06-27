@@ -95,8 +95,31 @@ time       2024-06-06 10:12:27
 
 
 ```
-Then from the console you can use the Arthas commands
+Then from the console you can use any Arthas commands
 
+for example one of the simplest ones is `jvm`command that will show information of the JVM context
+```
+[arthas@36030]$ jvm
+ RUNTIME                                                                                 
+-----------------------------------------------------------------------------------------
+ MACHINE-NAME             36030@VPC00560                                                 
+ JVM-START-TIME           2024-06-27 09:14:40                                            
+ MANAGEMENT-SPEC-VERSION  1.2                                                            
+ SPEC-NAME                Java Virtual Machine Specification                             
+ SPEC-VENDOR              Oracle Corporation                                             
+ SPEC-VERSION             1.8                                                            
+ VM-NAME                  OpenJDK 64-Bit Server VM                                       
+ VM-VENDOR                Private Build                                                  
+ VM-VERSION               25.412-b08                                                     
+ INPUT-ARGUMENTS          -Dfile.encoding=UTF-8                                          
+                          -Duser.country=GB                                              
+                          -Duser.language=en                                             
+                          -Duser.variant                                                 
+ CLASS-PATH               ....
+ 
+< MORE INFORMATION .....>
+
+```
 NOTE: **Once we have finished our work in Arthas, it is very important to CLOSE its process by using command `stop`**
 <br/><br/>
 ```
