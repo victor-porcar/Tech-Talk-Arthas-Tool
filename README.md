@@ -306,12 +306,16 @@ The command vmtool can force the GC as follows:
 [arthas@10]$ stop
 ```
 
+
+<br/>
+<br/>
+
 ## Appendix 1: Digging deeper in OGNL syntax
 
-Arthas uses OGNL -  Apache Commons OGNL - Language Guide for almost  all commands expressions, this means you need to use this to inspect and filter over any variable inside any object in the Java process. So requires a bit of knowledge about OGNL to perform the operation you want.
+Arthas uses OGNL -  Apache Commons OGNL - Language Guide for almost all commands expressions, this means you need to use this to inspect and filter over any variable inside any object in the Java process. So requires a bit of knowledge about OGNL to perform the operation you want.
 
 The most simple example would be looking at a singleton class.
-ognl '@com.test.MyClass@INSTANCE' which follows the  @class@field syntax.
+`ognl '@com.test.MyClass@INSTANCE'` which follows the  @class@field syntax.
 
 You can review the OGNL specs to see more in detail how to build any ognl expression, but here is a guided example to see the difference between “traditional” Java syntax and ognl:
 ognl '@com.test.MyClass@INSTANCE.get({"87164"}, @java.time.Instant@ofEpochSecond(1713825471), @java.time.Instant@ofEpochSecond(1713911871), false, "SPA")'
@@ -345,6 +349,10 @@ Map
 It’s possible to also map the objects from a list to other, like in .stream().map(...) method.
 
 ognl '@com.test.MyClass@INSTANCE.getList().{ #this.getId()}' 
+
+
+<br/>
+<br/>
 
 
 ## Appendix 2:  Using Kubernetes
