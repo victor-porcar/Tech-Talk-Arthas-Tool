@@ -12,15 +12,10 @@ The doc is available [here](https://arthas.aliyun.com/en/doc)<br/>
  - [Usage](#usage)
  - [Typical USE CASES](#typical-use-cases):
      - [Change CLASS definition on the fly](#change-class-definition-on-the-fly)
-     	- [Kubernetes Change CLASS definition on the fly](#kubernetes-change-class-definition-on-the-fly)
      - [Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
-     	- [Kubernetes Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#kubernetes-intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
      - [Set variable value of an instance](#set-variable-value-of-an-instance)  
-     	- [Kubernetes Set variable value of an instance](#kubernetes-set-variable-value-of-an-instance)  
      - [Invoke method of an instance](#invoke-method-of-an-instance)  
-     	- [Kubernetes Invoke method of an instance](#kubernetes-invoke-method-of-an-instance)  
      - [Force GC](#force-gc)  
-     	- [Kubernetes Force GC](#kubernetes-force-gc)  
 
 <br/>
 <br/>
@@ -46,7 +41,7 @@ NOTE: Arthas and the JVM must be running in the same machine. It does not allow 
  
 Once attached, Arthas will offer a console to enter Arthas [commands](https://arthas.aliyun.com/en/doc/commands.html). There are more than 45 available, although in this tech talk only a small selection will be explained
 
-Besides, in this tech talk two utility files are attached to use Arthas easily in Kubernetes clusters (see its usage later):
+Besides, in this tech talk two utility files are attached to use Arthas easily in Kubernetes clusters (see APPENDIX 1):
 
 * [kubernetes_arthas_execution.sh](./kubernetes_arthas_execution.sh)
 * [kubernetes_file_upload.sh](./kubernetes_file_upload.sh)
@@ -144,7 +139,10 @@ kill <PID>
 <br/>
 <br/>
 
-# Typical Use Cases
+## Typical Use Cases
+
+<br/>
+<br/>
 
 ### Change CLASS definition on the fly
 
@@ -166,14 +164,9 @@ The new class can not add or delete attributes
 
 NOTE: this technique can be useful to add more logs or change the logic of a particular method.
 
-#### Kubernetes Change CLASS definition on the fly
-Use the kubernetes scripts as follows:
-```
-kubernetes_file_upload.sh "<LOCAL_FOLDER>/MyClass.class" "<POD_NAME_PATTERN>" "/tmp"
-kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "retransform /tmp/MyClass.class;stop"
-```
 <br/>
 <br/>
+
 ### Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS
 
 Before explaining how to do it using command watch, it is worth to mention that params, return value and exceptions can be examined by adding proper log lines using the previous technique to change class definition "on the fly".
@@ -249,14 +242,8 @@ ts=2024-06-05 13:45:42; [cost=0.037923ms] result=@ArrayList[
 [arthas@10]$ stop
 ```
 
-#### Kubernetes Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS
-Use the kubernetes scripts as follows:
-```
-kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "watch com.test.MyClass myMethod '{params[0],params[1],returnObj,throwExp}' -x 2"
-```
-This command will leave opened the arthas console showing the invocations call to the method. To abort it is necessary to close it manually as explained in introduction
-<br/>
-<br/>
+
+
 ### Inspect / Set variable value 
 
 Let's assume there is an instance variable called "inProgress" in class com.test.MyClass and assume there is only one instance
@@ -282,13 +269,10 @@ NOTE: in the --express argument you can use any [OGNL](https://commons.apache.or
 ```
 vmtool --action getInstances -className com.test.MyClass --express instances.{^ #this.getId().equals(1)}.inProgress
 ```
-#### Kubernetes Inspect / Set variable value 
-Use the kubernetes scripts as follows:
-```
-kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "options strict false;vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress=false;stop"
-```
+ 
 <br/>
 <br/>
+
 ### Invoke method of an instance
 
 Let's assume there is an instance of class com.test.MyClass and assume which have a public method go() and let's assume that there is only one instanceof this class (singleton)
@@ -299,11 +283,7 @@ The command vmtool allows to  invoke that method
 [arthas@10]$ vmtool --action getInstances  --className tcom.test.MyClass --express instances[0].go()
 [arthas@10]$ stop
 ```
-#### Kubernetes Invoke method of an instance
-Use the kubernetes scripts as follows:
-```
-kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "vmtool --action getInstances  --className tcom.test.MyClass --express instances[0].go();stop"
-```
+
 <br/>
 <br/>
 ### Force GC
@@ -314,11 +294,7 @@ The command vmtool can force the GC as follows:
 [arthas@10]$ vmtool --action forceGc
 [arthas@10]$ stop
 ```
-#### Kubernetes Force GC
-Use the kubernetes scripts as follows:
-```
-kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "vmtool --action forceGc;stop"
-```
+ 
 
 
 
