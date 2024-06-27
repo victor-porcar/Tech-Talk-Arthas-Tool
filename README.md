@@ -7,7 +7,20 @@ It is open sourced project by Alibaba.   → GitHub [here](https://github.com/al
 The doc is available [here](https://arthas.aliyun.com/en/doc)<br/>
 
  
- 
+ ```
+[arthas@10]$ options strict false
+[arthas@10]$ vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress=false
+[arthas@10]$ @Boolean[true]
+[arthas@10]$ stop
+```
+NOTE 1: the first command `options strict false` is necessary to set a variable value
+NOTE 2: in the --express argument you can use any [OGNL](https://commons.apache.org/dormant/commons-ognl/)  expression, as described in the APPENDIX 1 section. So if we want to select an specific instance over many other, a OGNL can be used to filter over it, example:
+
+it filters the instances having its id equals to 1
+
+```
+vmtool --action getInstances -className com.test.MyClass --express instances.{^ #this.getId().equals(1)}.inProgress
+```
  - [Introduction](#introduction)
  - [Usage](#usage)
  - [Typical USE CASES](#typical-use-cases):
@@ -244,12 +257,14 @@ ts=2024-06-05 13:45:42; [cost=0.037923ms] result=@ArrayList[
 
 ### Inspect / Set variable value 
 
+#### Instance variable
+
 Let's assume there is an instance variable called "inProgress" in class com.test.MyClass and assume there is only one instance
 of this class (singleton)
 
 The command `vmtool` allows to inspect / set the value of this attribute
 
-INSPECT
+***INSPECT***
  ```
 [arthas@10]$ vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress
 [arthas@10]$ @Boolean[false]
@@ -257,18 +272,7 @@ INSPECT
 ```
 in the previous example the value is false
 
-If the variable was static, use @ognl expression as follows:
-
- ```
-[arthas@10]$ ognl '@com.test.MyClass@STATIC_VARIABLE' 
-[arthas@10]$ @Boolean[false]
-[arthas@10]$ stop
-```
-
-
-
-
-SET
+***SET***
 ```
 [arthas@10]$ options strict false
 [arthas@10]$ vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress=false
@@ -284,13 +288,24 @@ it filters the instances having its id equals to 1
 vmtool --action getInstances -className com.test.MyClass --express instances.{^ #this.getId().equals(1)}.inProgress
 ```
 
- 
+ #### Static variable
+****INSPECT***
+use @ognl expression as follows:
+ ```
+[arthas@10]$ ognl '@com.test.MyClass@STATIC_VARIABLE' 
+[arthas@10]$ @Boolean[false]
+[arthas@10]$ stop
+```
 
+***SET***
+TODO
  
 <br/>
 <br/>
 
 ### Invoke method
+
+#### Instance method
 
 Let's assume there is an instance of class com.test.MyClass and assume which have a public method `getList()` and let's assume that there is only one instanceof this class (singleton)
 
@@ -301,7 +316,9 @@ The command vmtool allows to invoke that method (similar to inspect/set variable
 [arthas@10]$ stop
 ```
 
-If the method was static, use directly ongl command
+#### Static method
+
+Use directly ongl command
 
 ```
 [arthas@10]$ ognl '@com.test.MyClass@myStaticMethod()'
