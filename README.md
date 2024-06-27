@@ -39,7 +39,7 @@ So it helps developers to address scenarios like the following:
 * I’d like to profile a particular method to understand what is going on.
 
  
-Arthas process is “attached” to a given running Java application in a way that it can access and manipulate the JVM running the Java app.</br>
+Arthas process is “attached” to a given running Java application in a way that it can access and manipulate *transparently* the JVM running the Java app.</br>
 NOTE: Arthas and the JVM must be running in the same machine. It does not allow to “attach” remotely.
 
  
