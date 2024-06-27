@@ -1,4 +1,4 @@
-# Tech Talk: Introduction to Arthas Tool
+# Tech Talk: Arthas Tool
 
 This is an overview of the [Arthas](https://arthas.aliyun.com/en/) tool, which is a complete set of diagnostic tools to troubleshoot JVM issues on the fly. 
 
