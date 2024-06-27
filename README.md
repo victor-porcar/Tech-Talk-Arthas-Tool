@@ -1,9 +1,15 @@
-# Arthas Cheatsheet
-This is an overview of the [Arthas](https://github.com/alibaba/arthas) tool, which is a complete set of diagnostic tools to troubleshoot JVM issues on the fly.<br/>
-Arthas allows developers to troubleshoot production issues for Java applications without modifying code or restarting servers.<br/>
+# Tech Talk Introduction to Arthas Tool
+
+This is an overview of the [Arthas](https://github.com/alibaba/arthas) tool, which is a complete set of diagnostic tools to troubleshoot JVM issues on the fly. 
+
+It is open sourced project by Alibaba.   → GitHub [here](https://github.com/alibaba/arthas)
+
 The doc is available [here](https://arthas.aliyun.com/en/doc)<br/>
+
+ 
  
  - [Introduction](#introduction)
+ - [Usage](#usage)
  - [Typical USE CASES](#typical-use-cases):
      - [Change CLASS definition on the fly](#change-class-definition-on-the-fly)
      	- [Kubernetes Change CLASS definition on the fly](#kubernetes-change-class-definition-on-the-fly)
@@ -18,8 +24,34 @@ The doc is available [here](https://arthas.aliyun.com/en/doc)<br/>
 
 <br/>
 <br/>
- 
+
 ## Introduction
+
+Arthas allows developers to troubleshoot production issues for Java applications without modifying code or restarting servers.  So it helps developers to address scenarios like the following:
+
+* There is an error in production under particular conditions, If I could add more log I would be able to see what is going on ! 
+* I believe changing this chunk of code it would resolve the issue, but I can not test it until a full release cycle is performed and that is not possible now.
+* I know this method fails but in order to know why I need to know the value of the parameter passed in the method.
+* An instance variable value is set incorrectly, If I could change the value then I would be able to fix a potential problem.
+* I’d like to force a Garbage Collector to understand a given issue.
+* I’d like to inspect the values of a certain object to understand a given issue.
+* I’d like to debug / profile the application while running to understand what is going on.
+
+ 
+Arthas process is “attached” to a given running Java application in a way that it can access and manipulate the JVM running the Java app.
+Arthas and the JVM must be running in the same machine. It does not allow to “attach” remotely.
+
+ 
+Once attached, Arthas will offer a console to enter Arthas commands. There are more than 45 available  [commands](https://arthas.aliyun.com/en/doc/commands.html), although in this tech talk only a small selection will be explained
+
+Besides, in this document two utility files are attached to use it easily in Kubernetes (see its usage later):
+
+* [kubernetes_arthas_execution.sh](./kubernetes_arthas_execution.sh)
+* [kubernetes_file_upload.sh](./kubernetes_file_upload.sh)
+
+
+ 
+## Usage
  
 In order to use it, download it and execute it in any environment running a JVM
 ```
