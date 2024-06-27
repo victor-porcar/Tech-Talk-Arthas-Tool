@@ -1,6 +1,6 @@
 # Tech Talk Introduction to Arthas Tool
 
-This is an overview of the [Arthas](https://github.com/alibaba/arthas) tool, which is a complete set of diagnostic tools to troubleshoot JVM issues on the fly. 
+This is an overview of the [Arthas]([https://github.com/alibaba/arthas](https://arthas.aliyun.com/en/) tool, which is a complete set of diagnostic tools to troubleshoot JVM issues on the fly. 
 
 It is open sourced project by Alibaba.   → GitHub [here](https://github.com/alibaba/arthas)
 
@@ -31,7 +31,7 @@ Arthas allows developers to troubleshoot production issues for Java applications
 
 * There is an error in production under particular conditions, If I could add more log I would be able to see what is going on ! 
 * I believe changing this chunk of code it would resolve the issue, but I can not test it until a full release cycle is performed and that is not possible now.
-* I know this method fails but in order to know why I need to know the value of the parameter passed in the method.
+* I know this method fails but in order to know why I need to know the value of the parameter passed in a particular method.
 * An instance variable value is set incorrectly, If I could change the value then I would be able to fix a potential problem.
 * I’d like to force a Garbage Collector to understand a given issue.
 * I’d like to inspect the values of a certain object to understand a given issue.
