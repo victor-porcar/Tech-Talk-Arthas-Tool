@@ -77,7 +77,10 @@ Now you have to choose one of the JVM, once selected, the Arthas console will ap
 2
 [INFO] arthas home: /home/victor.porcar/.arthas/lib/3.7.2/arthas
 [INFO] Try to attach process 131521
-Picked up JAVA_TOOL_OPTIONS: 
+ws_powersearch2/capability-iris 
+                          -sdp-search/service-iris-sdp-search/build/classes/java/main:/h 
+                          ome/victor.porcar/workspaces/ws_powersearch2/capability-iris-s 
+                          dp-search/service-iris-sdp-search/build/resources/main:/home/vPicked up JAVA_TOOL_OPTIONS: 
 [INFO] Attach process 131521 success.
 [INFO] arthas-client connect 127.0.0.1 3658
   ,---.  ,------. ,--------.,--.  ,--.  ,---.   ,---.                           
