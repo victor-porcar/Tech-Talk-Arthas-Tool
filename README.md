@@ -16,6 +16,7 @@ The doc is available [here](https://arthas.aliyun.com/en/doc)<br/>
      - [Inspect / Set variable value](#inspect--set-variable-value)  
      - [Invoke method](#invoke-method)  
      - [Force GC](#force-gc)
+     - [Profile invocation of a method](#profile-invocation-of-a-method)
  - [Appendix 1: Digging deeper in OGNL syntax](#appendix-1-digging-deeper-in-ognl-syntax) 
  - [Appendix 2:  Using Kubernetes](#appendix-2--using-kubernetes)
  
@@ -33,9 +34,9 @@ So it helps developers to address scenarios like the following:
 * I believe changing the logic in a method would fix a problem, but I can not test it until a full release cycle is performed and that is not possible now.
 * I know this method fails but in order to know why I need to know the value of the parameter passed in a particular method.
 * An instance variable value is set incorrectly, If I could change the value then I would be able to fix a potential problem.
+* I’d like to inspect the values of a certain variable to understand a given issue.
 * I’d like to force a Garbage Collector to understand a given issue.
-* I’d like to inspect the values of a certain object to understand a given issue.
-* I’d like to debug / profile the application while running to understand what is going on.
+* I’d like to profile a particular method to understand what is going on.
 
  
 Arthas process is “attached” to a given running Java application in a way that it can access and manipulate the JVM running the Java app.</br>
@@ -284,6 +285,19 @@ The command vmtool allows to invoke that method (similar to inspect/set variable
 <br/>
 <br/>
 
+
+### Force GC
+ 
+The command vmtool can force the GC as follows:
+ 
+```
+[arthas@10]$ vmtool --action forceGc
+[arthas@10]$ stop
+```
+
+<br/>
+<br/>
+
 ### Profile invocation of a method
 
 use command `trace`
@@ -296,15 +310,6 @@ use command `trace`
 <br/>
 <br/>
 
-
-### Force GC
- 
-The command vmtool can force the GC as follows:
- 
-```
-[arthas@10]$ vmtool --action forceGc
-[arthas@10]$ stop
-```
 
 
 <br/>
