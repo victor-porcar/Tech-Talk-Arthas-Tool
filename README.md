@@ -13,7 +13,7 @@ The doc is available [here](https://arthas.aliyun.com/en/doc)<br/>
  - [Typical USE CASES](#typical-use-cases):
      - [Change CLASS definition on the fly](#change-class-definition-on-the-fly)
      - [Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
-     - [Set variable value of an instance](#set-variable-value-of-an-instance)  
+     - [Inspect / Set variable value](#inspect-/-set-variable-value)  
      - [Invoke method of an instance](#invoke-method-of-an-instance)  
      - [Force GC](#force-gc)  
 
