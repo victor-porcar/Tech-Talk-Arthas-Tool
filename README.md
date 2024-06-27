@@ -48,7 +48,7 @@ Once attached, Arthas will offer a console to enter Arthas [commands](https://ar
 
  
 ## Usage
- FOLDER>/MyClass.class
+ 
 In order to use Arthas, download it and execute it in any environment running a JVM
 ```
 curl -O https://arthas.aliyun.com/arthas-boot.jar
