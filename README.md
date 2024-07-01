@@ -248,8 +248,8 @@ Let's assume MyClass as follows
 package com.test
 
 Class MyClass {
-  String a;
-  String b;
+  public String a;
+  public String b;
 }
 
 ``` 
@@ -299,19 +299,22 @@ So in this way if we need to get the value of `a` attribute of those objects the
 
 **SET**
 
+The following command will set the value "Horro" to the attribute `a` to all objects of MyClass having it `b` attribute with value "Culture"
+
+`vmtool --action getInstances -className com.test.MyClass --express 'instances.{? #this.b.equals("Culture")}.{#this.a="Horror"}'`
+
+If the value were private, it is required to execute the following command before setting the variable
 ```
 [arthas@10]$ options strict false
-[arthas@10]$ vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress=false
-[arthas@10]$ @Boolean[true]
-[arthas@10]$ stop
+ 
 ```
-NOTE: the first command `options strict false` is necessary to set a variable value<br/>
+<br/>
 
  #### Static variable
  
 **INSPECT**
 
-use @ognl expression as follows:
+use @ognl command expression as follows:
  ```
 [arthas@10]$ ognl '@com.test.MyClass@STATIC_VARIABLE' 
 [arthas@10]$ @Boolean[false]
