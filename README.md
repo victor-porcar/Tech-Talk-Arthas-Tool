@@ -342,7 +342,16 @@ It works similarly to inspect variables:
 [arthas@10]$ vmtool --action getInstances  --className com.test.MyClass --express 'instances[0].getList()'
 [arthas@10]$ stop
 ```
+Let's assume that the method has parameters: 
+<br/>
+`public List<String> getList(List<String> ids, Instant instant,  Boolean stbView, String lang)`
 
+then the following would be an example of invocation
+
+```
+[arthas@10]$ vmtool --action getInstances  --className com.test.MyClass --express 'instances[0].getList({"87164","98989"}, @java.time.Instant@ofEpochSecond(1713825471),false, "SPA")'
+[arthas@10]$ stop
+```
 
 #### Static method
 
@@ -352,19 +361,6 @@ Use directly ongl command
 [arthas@10]$ ognl '@com.test.MyClass@myStaticMethod()'
 [arthas@10]$ stop
 ```
-
-
-Let's suppose the static method has parameters, for example:
-
-`public static void myStaticMethodWithParams(List<String> ids, Instant start, Instant end, Boolean stbView, String lang)`
-
-the way to invoke this static method would be:
-
-`
-[arthas@10]$ ognl '@com.test.MyClass@myStaticMethod({"87164","98989"}, @java.time.Instant@ofEpochSecond(1713825471), @java.time.Instant@ofEpochSecond(1713911871), false, "SPA")'
-[arthas@10]$ stop
-`
-
 
 <br/>
 <br/>
