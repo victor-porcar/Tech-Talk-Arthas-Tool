@@ -374,7 +374,7 @@ The command vmtool can force the GC as follows:
 
 use command `trace`
 ```
-[arthas@10]$ [arthas@10]$ trace com.test.MyClass getList
+[arthas@10]$ [arthas@10]$ trace test.arthas.TestTraceServlet doGet
 [arthas@10]$ stop
 ```
 ![image](./images/trace-arthas.png)
