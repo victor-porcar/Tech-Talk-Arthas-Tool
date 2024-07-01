@@ -151,13 +151,11 @@ steps:
 [arthas@10]$ retransform <LOCAL_FOLDER>/MyClass.class
 [arthas@10]$ stop
 ```
-*NOTE:* the new version of the class can not have more methods that the original and can not change their signatures. in other words, it is allowed to change only the "body" of the methods, otherwise a exception like this would happen:
-<br/>
-`retransform error! java.lang.UnsupportedOperationException: class redefinition failed: attempted to add a method`
+NOTE 1: There are some restrictions:
+* the new version of the class can not have more methods that the original and can not change their signatures. in other words, it is allowed to change only the "body" of the methods, otherwise a exception like this would happen: `retransform error! java.lang.UnsupportedOperationException: class redefinition failed: attempted to add a method`
+* The new class can not add or delete instance attributes
 
-The new class can not add or delete attributes
-
-NOTE: this technique can be useful to add more logs or change the logic of a particular method.
+NOTE 2: this technique can be useful to add more logs or change the logic of a particular method.
 
 <br/>
 <br/>
