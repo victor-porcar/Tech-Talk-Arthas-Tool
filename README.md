@@ -239,27 +239,28 @@ ts=2024-06-05 13:45:42; [cost=0.037923ms] result=@ArrayList[
 
 ### Inspect / Set object variable value 
 
+
 #### Instance variable
 
 Let's assume there are several objects of class com.test.MyClass
 Let's assume MyClass has two String attributes: 
-* valueInLanguage
-* persistedValue
+* a
+* b
  
-The command `vmtool` allows to inspect / set these objects
+The command `vmtool` allows to inspect / set these objects and its attributes
 
 
 
 **INSPECT**
 
-In order to see the value of 100 objects (with no particular order): 
+To begin with, the following command show the content of the first 100 objects of class MyClass  (with no particular order): 
 
  ```
 [arthas@10]$ vmtool --action getInstances -className com.test.MyClass -limit 100
 [arthas@10]$ @MyClass[][
-[arthas@10]$     @MyClass[MyClass(valueInLanguage=Knowledge, persistedValue=Culture/Knowledge)],
-[arthas@10]$     @MyClass[MyClass(valueInLanguage=Folk, persistedValue=Music/Folk)],
-[arthas@10]$     @MyClass[MyClass(valueInLanguage=Actualidad, persistedValue=Sports/Programmes)],
+[arthas@10]$     @MyClass[MyClass(a=Knowledge, b=Culture/Knowledge)],
+[arthas@10]$     @MyClass[MyClass(a=Folk, b=Music/Folk)],
+[arthas@10]$     @MyClass[MyClass(a=Actualidad, b=Sports/Programmes)],
 [arthas@10]$  ....
 [arthas@10]$ stop
 ```
