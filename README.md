@@ -6,21 +6,6 @@ It is open sourced project by Alibaba.   → GitHub [here](https://github.com/al
 
 The doc is available [here](https://arthas.aliyun.com/en/doc)<br/>
 
- 
- ```
-[arthas@10]$ options strict false
-[arthas@10]$ vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress=false
-[arthas@10]$ @Boolean[true]
-[arthas@10]$ stop
-```
-NOTE 1: the first command `options strict false` is necessary to set a variable value
-NOTE 2: in the --express argument you can use any [OGNL](https://commons.apache.org/dormant/commons-ognl/)  expression, as described in the APPENDIX 1 section. So if we want to select an specific instance over many other, a OGNL can be used to filter over it, example:
-
-it filters the instances having its id equals to 1
-
-```
-vmtool --action getInstances -className com.test.MyClass --express instances.{^ #this.getId().equals(1)}.inProgress
-```
  - [Introduction](#introduction)
  - [Usage](#usage)
  - [Typical USE CASES](#typical-use-cases):
