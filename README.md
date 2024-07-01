@@ -283,15 +283,15 @@ Actually it returns a list of objects, it is possible to refer to one, for examp
 ```
 Please note that the --express parameter value is a [OGNL](https://commons.apache.org/dormant/commons-ognl/) expression, which offers a powerful way to operate with objects and its attributes in this context
 
-For example the following command will filter all objects of MyClass having "b" attribute equals to "Culture"
+For example the following command will filter all objects of MyClass having `b` attribute equals to "Culture"
 
-` vmtool --action getInstances -className com.test.MyClass --express 'instances.{? #this.b.equals("Culture")}`
+` vmtool --action getInstances -className com.test.MyClass --express 'instances.{? #this.b.equals("Culture")}'`
 
 NOTE: 
  
 * `instances.{? #this.b.equals("Culture")}` can be seen as the Java expression: `instances.stream().filter(x->x.equals("Culture)).collect(Collectors.toList())`
 
-So in this way if we need to get the value of `a` attribute of those objects then:
+So in this way if is required to get the value of `a` attribute of those objects then:
 
 `vmtool --action getInstances -className com.test.MyClass --express 'instances.{? #this.b.equals("Culture")}.{#this.a}'`
 
@@ -299,7 +299,7 @@ So in this way if we need to get the value of `a` attribute of those objects the
 
 **SET**
 
-The following command will set the value "Horro" to the attribute `a` to all objects of MyClass having it `b` attribute with value "Culture"
+The following command will set the value "Horror" to the attribute `a` to all objects of MyClass having it `b` attribute with value "Culture"
 
 `vmtool --action getInstances -className com.test.MyClass --express 'instances.{? #this.b.equals("Culture")}.{#this.a="Horror"}'`
 
