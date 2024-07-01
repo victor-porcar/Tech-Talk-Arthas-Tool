@@ -243,60 +243,57 @@ ts=2024-06-05 13:45:42; [cost=0.037923ms] result=@ArrayList[
 #### Instance variable
 
 Let's assume there are several objects of class com.test.MyClass
-Let's assume MyClass has two String attributes: 
-* a
-* b
+Let's assume MyClass as follows
+```
+Class MyClass {
+  String a;
+  String b;
+}
+
+``` 
  
-The command `vmtool` allows to inspect / set these objects and its attributes
+The command `vmtool` allows to inspect / set objects of this Class (instances) and its attributes
 
 
 
 **INSPECT**
 
-To begin with, the following command show the content of the first 100 objects of class MyClass  (with no particular order): 
+To begin with, the following command shows the content of the first 100 objects of class MyClass  (with no particular order): 
 
  ```
 [arthas@10]$ vmtool --action getInstances -className com.test.MyClass -limit 100
 [arthas@10]$ @MyClass[][
-[arthas@10]$     @MyClass[MyClass(a=Knowledge, b=Culture/Knowledge)],
-[arthas@10]$     @MyClass[MyClass(a=Folk, b=Music/Folk)],
-[arthas@10]$     @MyClass[MyClass(a=Actualidad, b=Sports/Programmes)],
+[arthas@10]$     @MyClass[MyClass(a=Knowledge, b=Culture)],
+[arthas@10]$     @MyClass[MyClass(a=Folk, b=Culture)],
+[arthas@10]$     @MyClass[MyClass(a=Sports, b=Programmes)],
 [arthas@10]$  ....
 [arthas@10]$ stop
 ```
 
-If there was only one object, because for example a Singleton pattern has been applied, then it can be obtained
+Actually it returns a list of objects, it is possible to refer to one, for example the first one. This case is useful to deal with Singleton, for example all managed beans by default in Spring are Singleton
 
  ```
-[arthas@10]$ vmtool --action getInstances -className com.test.MyClass --express instances[0].inProgress
-[arthas@10]$ @Boolean[false]
+[arthas@10]$ vmtool --action getInstances -className com.test.MyClass --express 'instances[0]'
+[arthas@10]$ @MyClass[][
+[arthas@10]$     @MyClass[MyClass(a=Knowledge, b=Culture)],
+[arthas@10]$ ]
 [arthas@10]$ stop
 ```
+Please note that the --express parameter value is a [OGNL](https://commons.apache.org/dormant/commons-ognl/) expression, which offers a powerful way to operate with objects and its attributes in this context
 
-NOTE: in the --express argument it is used a [OGNL](https://commons.apache.org/dormant/commons-ognl/)  expression, which allows to filter the required instances.
-In this case is showing the first found.
+For example the following command will filter all objects of MyClass having "b" attribute equals to "Culture"
+
+` vmtool --action getInstances -className com.test.MyClass --express 'instances.{? #this.b.equals("Culture")}`
+
+NOTE: 
+ 
+* `instances.{? #this.b.equals("Culture")}` can be seen as the Java expression: `instances.stream().filter(x->x.equals("Culture)).collect(Collectors.toList())`
+
+So in this way if we need to get the value of `a` attribute of those objects then:
+
+`vmtool --action getInstances -className com.test.MyClass --express 'instances.{? #this.b.equals("Culture")}.{#this.a}'`
 
 
-However, there are many scenarios in which there are many instances, in this case, filtering the required ones is necessary:
-
-<br/>
-For example to filter instances of class MyClass having its getId() method returning  1
-
-```
-vmtool --action getInstances -className com.test.MyClass --express instances.{? #this.getId().equals(1)}.inProgress
-```
-<br/>
-Filter and get the first match
-
-```
-vmtool --action getInstances -className com.test.MyClass --express instances.{^ #this.getId().equals(1)}.inProgress
-```
-<br/>
-Filter and get the last match
-
-```
-vmtool --action getInstances -className com.test.MyClass --express instances.{$ #this.getId().equals(1)}.inProgress
-```
 
 **SET**
 
