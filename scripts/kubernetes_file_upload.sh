@@ -8,7 +8,7 @@ if [ "$#" -ne 4 ]; then
     echo "this command will upload the given local file on path <LOCAL_FILE_PATH> to the path <POD_FILE_PATH> of"
     echo "all pods belonging to the given Namespace and having given <POD_NAME_PATTERN> as part of its name"
     echo -e "\n"
-    echo 'Example: upload_file_kubernetes.sh "/home/my_user/Test.class" "my-pod" "/tmp"'
+    echo 'Example: upload_file_kubernetes.sh "my-spacename" "/home/my_user/Test.class" "my-pod" "/tmp"'
     echo -e "\n"
     exit;
 fi
