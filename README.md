@@ -371,7 +371,7 @@ Use directly ongl command
 
 ### Profile invocation of a method
 
-Command `trace` is useful to help discovering and locating the performance flaws in your system.
+Command [trace](https://arthas.aliyun.com/en/doc/trace.html) is useful to help discovering and locating the performance flaws in your system.
 <br/>
 Given a method, it shows the total execution time of other methods called from inside of it.
 <br/>
