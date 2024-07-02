@@ -11,7 +11,7 @@ The doc is available [here](https://arthas.aliyun.com/en/doc)<br/>
  - [Typical USE CASES](#typical-use-cases):
      - [Change CLASS definition on the fly](#change-class-definition-on-the-fly)
      - [Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
-     - [Inspect / Set variable value](#inspect--set-variable-value)  
+     - [Inspect / Set object variable value](#inspect--set-object-variable-value)  
      - [Invoke method](#invoke-method)  
      - [Profile invocation of a method](#profile-invocation-of-a-method)
      - [Force GC](#force-gc)
