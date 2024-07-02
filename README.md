@@ -388,11 +388,12 @@ public class MyClass {
         method3();
         // some code
     }
-    ...
+...
 }
 ```
 
-The following trace command profiles `go()`  invocations
+The following trace command profiles `go()`  invocations, 
+it shows all executions of the method (in the screenshot it shows three executions)
 
 ```
 [arthas@10]$ [arthas@10]$ trace com.test.MyClass go
@@ -400,7 +401,7 @@ The following trace command profiles `go()`  invocations
 ```
 ![image](./images/arthas_profile_3.jpeg)
 
-NOTE: The #11, #13 and #15 indicates the line in source code
+NOTE: The #6, #8 and #10 indicates the line in source code
 
 <br/>
 <br/>
