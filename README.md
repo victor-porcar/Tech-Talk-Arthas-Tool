@@ -257,13 +257,13 @@ Class MyClass {
 
 ``` 
  
-The command `vmtool` allows to inspect / set objects of this Class (instances) and its attributes
+The command [vmtool](https://arthas.aliyun.com/en/doc/vmtool.html) allows to inspect / set objects of this Class (instances) and its attributes
 
 
 
 **INSPECT**
 
-To begin with, the following command shows the content of the first 100 objects of class MyClass  (with no particular order): 
+To begin with, the following command shows the content of the first 100 objects found of class MyClass  (with no particular order): 
 
  ```
 [arthas@10]$ vmtool --action getInstances -className com.test.MyClass -limit 100
@@ -275,7 +275,7 @@ To begin with, the following command shows the content of the first 100 objects 
 [arthas@10]$ stop
 ```
 
-Actually it returns a list of objects, it is possible to refer to one, for example the first one. This case is useful to deal with Singleton, for example all managed beans by default in Spring are Singleton
+Actually it returns a list of objects, it is possible to refer to one, for example the first one. This case is useful to deal with Singletons, for example all managed beans by default in Spring are Singleton
 
  ```
 [arthas@10]$ vmtool --action getInstances -className com.test.MyClass --express 'instances[0]'
