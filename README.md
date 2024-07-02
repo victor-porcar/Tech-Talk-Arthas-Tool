@@ -29,11 +29,11 @@ So it helps developers to address scenarios like the following:
 
 * There is an error in production under particular conditions, If I could add more log I would be able to see what is going on ! 
 * I believe changing the logic in a method would fix a problem, but I can not test it until a full release cycle is performed and that is not possible now.
-* I know this method fails but in order to know why I need to know the value of the parameter passed in a particular method.
-* An instance variable value is set incorrectly, If I could change the value then I would be able to fix a potential problem.
-* I’d like to inspect the values of a certain variable to understand a given issue.
-* I’d like to force a Garbage Collector to understand a given issue.
-* I’d like to profile a particular method to understand what is going on.
+* I know this method fails but in order to know why and when I need to know the value of the parameter passed in a particular parameter.
+* An instance variable value is set incorrectly, If I could change the value then I would be able to see whether that is the cause of a problem.
+* I’d like to inspect the values of certain variables.
+* I’d like to force a Garbage Collector.
+* I’d like to profile a particular method to see where is the bottleneck.
 
  
 Arthas process is “attached” to a given running Java application in a way that it can access and manipulate *transparently* the JVM running the Java app.</br>
