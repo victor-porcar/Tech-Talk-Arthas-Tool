@@ -384,7 +384,9 @@ The command vmtool can force the GC as follows:
 
 Command `trace` is useful to help discovering and locating the performance flaws in your system.
 <br/>
-NOTE: Arthas can only trace the first level method call each time.
+Given a method, it shows the total execution time of other methods called from inside of the method. 
+<br/>
+NOTE: It can only trace the first level method call each time.
 
 ```
 [arthas@10]$ [arthas@10]$ trace com.test.MyClass go
