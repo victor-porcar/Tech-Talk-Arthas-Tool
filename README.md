@@ -145,17 +145,17 @@ In order to change the definition of a class on the fly, Arthas offers command [
 
 steps:
 1) regenerate the new version of the class you wish to change using your IDE locally. If that is not possible, then generate new artifact as rar and unzipped it to find the corresponding class file.
-2) copy class file in any working local folder
+2) copy class file in any folder
 3) execute Arthas -> `java -jar arthas-boot.jar` and use the command retransform
 ```
-[arthas@10]$ retransform <LOCAL_FOLDER>/MyClass.class
+[arthas@10]$ retransform <FOLDER>/MyClass.class
 [arthas@10]$ stop
 ```
 NOTE 1: There are some restrictions:
-* the new version of the class can not have more methods that the original and can not change their signatures. in other words, it is allowed to change only the "body" of the methods, otherwise a exception like this would happen: `retransform error! java.lang.UnsupportedOperationException: class redefinition failed: attempted to add a method`
-* The new class can not add or delete instance attributes
+* the new version of the class can not have more or less methods that the original and methods can not change their signatures. in other words, it is allowed to change only the "body" of the methods, otherwise a exception like this would happen: `retransform error! java.lang.UnsupportedOperationException: class redefinition failed: attempted to add a method`
+* The new class can not add or delete instance or static attributes
 
-NOTE 2: this technique can be useful to add more logs or change the logic of a particular method.
+NOTE 2: this technique can be useful to add more logs or change the logic in a particular method.
 
 <br/>
 <br/>
