@@ -380,12 +380,19 @@ The command vmtool can force the GC as follows:
 
 ### Profile invocation of a method
 
-use command `trace`
+
+
+Command `trace` is useful to help discovering and locating the performance flaws in your system.
+<br/>
+NOTE: Arthas can only trace the first level method call each time.
+
 ```
-[arthas@10]$ [arthas@10]$ trace test.arthas.TestTraceServlet doGet
+[arthas@10]$ [arthas@10]$ trace com.test.MyClass go
 [arthas@10]$ stop
 ```
-![image](./images/trace-arthas.png)
+![image](./images/trace_arthas.jpeg)
+
+The #11, #13 and #15 indicates the line in source code
 
 <br/>
 <br/>
