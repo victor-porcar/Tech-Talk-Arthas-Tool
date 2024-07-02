@@ -243,7 +243,7 @@ ts=2024-06-05 13:45:42; [cost=0.037923ms] result=@ArrayList[
 #### Instance variable
 
 Let's assume there are several objects of the following class
-Let's assume MyClass as follows
+
 ```java
 package com.test
 
