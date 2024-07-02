@@ -244,7 +244,7 @@ ts=2024-06-05 13:45:42; [cost=0.037923ms] result=@ArrayList[
 
 Let's assume there are several objects of the following class
 Let's assume MyClass as follows
-```
+```java
 package com.test
 
 Class MyClass {
@@ -375,7 +375,7 @@ NOTE: It can only trace the first level method call each time.
 <br/>
 For example, given the following class
 
-```
+```java
 package com.test;
 public class MyClass {
 
@@ -390,7 +390,6 @@ public class MyClass {
     }
     ...
 }
-
 ```
 
 The following trace command profiles `go()`  invocations
