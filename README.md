@@ -398,7 +398,7 @@ The following trace command profiles `go()`  invocations
 [arthas@10]$ [arthas@10]$ trace com.test.MyClass go
 [arthas@10]$ stop
 ```
-![image](./images/trace_arthas.jpeg)
+![image](./images/arthas_profile_3.jpeg)
 
 NOTE: The #11, #13 and #15 indicates the line in source code
 
