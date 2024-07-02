@@ -2,7 +2,7 @@
 
 This is an overview of the [Arthas](https://arthas.aliyun.com/en/) tool, which is a complete set of diagnostic tools to troubleshoot JVM issues on the fly. 
 
-It is open sourced project by Alibaba.   → GitHub [here](https://github.com/alibaba/arthas)
+It is an open source project by Alibaba.   → GitHub [here](https://github.com/alibaba/arthas)
 
 The doc is available [here](https://arthas.aliyun.com/en/doc)<br/>
 
