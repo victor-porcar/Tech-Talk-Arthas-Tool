@@ -433,7 +433,7 @@ kubernetes_arthas_execution.sh "<KUBERNETES_NAMESPACE>" "<POD_NAME_PREFIX>" "<AR
 for example, let's suppose there are the following pods:
 
 ```
-$ kubectl get pods | grep "service-search"
+$ kubectl get pods --namespace "my-namespace" | grep "service-search"
 
 service-search-7ddffdcf5b-l9gdz           1/1     Running     0         2d19h
 service-search-587f749bbc-vlbcr           1/1     Running     0         2d19h
