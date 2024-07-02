@@ -422,7 +422,7 @@ The command vmtool can force the GC as follows:
 
 I've created a couple of scripts useful to apply Arthas in a Kubernetes environment
 
-### kubernetes_arthas_execution.sh
+### [kubernetes_arthas_execution.sh](./scripts/kubernetes_arthas_execution.sh)
 
 It allows to apply a Arthas command to all pods belonging to the given "<KUBERNETES_NAMESPACE>" and having <POD_NAME_PREFIX> (beginning of its name)
 
@@ -446,7 +446,7 @@ The following script would apply the arthas command to execute a method to both 
 ./scripts/kubernetes_arthas_execution.sh "my-namespace" "service-search" "vmtool --action getInstances  --className tcom.test.MyClass --express instances[0].getList();stop"
 ```
 
-### kubernetes_file_upload.sh
+### [kubernetes_file_upload.sh](./scripts/kubernetes_file_upload.sh)
 
 It allows to upload a file to all pods belonging to the given "<KUBERNETES_NAMESPACE>" and having <POD_NAME_PREFIX> (beginning of its name)
 ```
