@@ -424,10 +424,10 @@ I've created a couple of scripts useful to apply Arthas in a Kubernetes environm
 
 ### kubernetes_arthas_execution.sh
 
-It allows to apply a Arthas command to all pods having the given <POD_NAME_PATTERN> as the beginning of its name
+It allows to apply a Arthas command to all pods belonging to the given "<KUBERNETES_NAMESPACE>" and having <POD_NAME_PREFIX> (beginning of its name)
 
 ```
-kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "<ARTHAS_COMMAND>"
+kubernetes_arthas_execution.sh "<KUBERNETES_NAMESPACE>" "<POD_NAME_PREFIX>" "<ARTHAS_COMMAND>"
 ```
 
 for example, let's suppose there are the following pods:
@@ -443,21 +443,23 @@ service-search-587f749bbc-vlbcr           1/1     Running     0         2d19h
 The following script would apply the arthas command to execute a method to both pods:
 
 ```
-./scripts/kubernetes_arthas_execution.sh "service-search" "vmtool --action getInstances  --className tcom.test.MyClass --express instances[0].getList();stop"
+./scripts/kubernetes_arthas_execution.sh "my-namespace" "service-search" "vmtool --action getInstances  --className tcom.test.MyClass --express instances[0].getList();stop"
 ```
 
 ### kubernetes_file_upload.sh
 
-It allows to upload a file to all pods having the given <POD_NAME_PATTERN> as the beginning of its name
+It allows to upload a file to all pods belonging to the given "<KUBERNETES_NAMESPACE>" and having <POD_NAME_PREFIX> (beginning of its name)
 ```
-./scripts/kubernetes_file_upload.sh "<LOCAL_PATH_FOR_FILE" "<POD_NAME_PATTERN>" "<POD_PATH_FOR_FILE>
+./scripts/kubernetes_file_upload.sh "<KUBERNETES_NAMESPACE>" "<LOCAL_PATH_FOR_FILE" "<POD_NAME_PATTERN>" "<POD_PATH_FOR_FILE>
 ```
 
-It is useful to change class on the fly
+It is useful to change class on the fly <br/>
+
+For example:
 
 ```
-kubernetes_file_upload.sh "<LOCAL_FOLDER>/MyClass.class" "<POD_NAME_PATTERN>" "/tmp"
-kubernetes_arthas_execution.sh "<POD_NAME_PATTERN>" "retransform /tmp/MyClass.class;stop"
+kubernetes_file_upload.sh "my-space" "/home/victor.porcar/workspaces/my_service/build/classes/java/main/com/test/MyClass.class" "service-search" "/tmp"
+kubernetes_arthas_execution.sh "my-space" "service-search" "retransform /tmp/MyClass.class;stop"
 ```
 
 
