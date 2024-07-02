@@ -1,10 +1,10 @@
 #!/bin/bash
 
 if [ "$#" -ne 3 ]; then
-	echo -e "\n"
+    echo -e "\n"
     echo "Illegal number of parameters."
     echo "USAGE: arthas_execution_kubernetes.sh <KUBERNETES_NAMESPACE> <POD_NAME_PATTERN> <ARTHAS_COMMAND>"
-    echo "this command will apply the given <ARTHAS_COMMAND> to all pods belonging to the given Namespace and having in its name the string prefix <POD_NAME_PATTERN>"
+    echo "this command will apply the given <ARTHAS_COMMAND> to all pods belonging to the given Namespace and having given  <POD_NAME_PATTERN> as part of its name"
     echo -e "\n"
     echo 'Example: arthas_execution_kubernetes.sh "my-namespace" "my-pod" "jvm;stop"'
     echo -e "\n"
@@ -38,7 +38,7 @@ echo -e "\n"
 case "$response" in
 
     [yY][eE][sS]|[yY]) 
-        echo $POD_NAMES | tr ' ' '\n' | xargs -tI{} kubectl exec {} -- bash -c \
+        echo $POD_NAMES | tr ' ' '\n' | xargs -tI{} kubectl exec --namespace "$KUBERNETES_NAMESPACE" {} -- bash -c \
         "curl -O https://arthas.aliyun.com/arthas-boot.jar; java -jar arthas-boot.jar -c \"$ARTHAS_COMMAND\" \$($PID_JAVA_SERVICE)" 
 
         echo "The Arthas command was applied."
