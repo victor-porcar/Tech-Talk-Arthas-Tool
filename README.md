@@ -13,8 +13,8 @@ The doc is available [here](https://arthas.aliyun.com/en/doc)<br/>
      - [Intercept calls to a method and show PARAMS, RETURN value and EXCEPTIONS](#intercept-calls-to-a-method-and-show-params-return-value-and-exceptions)
      - [Inspect / Set variable value](#inspect--set-variable-value)  
      - [Invoke method](#invoke-method)  
-     - [Force GC](#force-gc)
      - [Profile invocation of a method](#profile-invocation-of-a-method)
+     - [Force GC](#force-gc)
  - [Appendix: Using Kubernetes](#appendix--using-kubernetes)
  
 
@@ -365,7 +365,25 @@ Use directly ongl command
 <br/>
 <br/>
 
+### Profile invocation of a method
 
+Command `trace` is useful to help discovering and locating the performance flaws in your system.
+<br/>
+Given a method, it shows the total execution time of other methods called from inside of it.
+<br/>
+NOTE: It can only trace the first level method call each time.
+<br/>
+For example:
+```
+[arthas@10]$ [arthas@10]$ trace com.test.MyClass go
+[arthas@10]$ stop
+```
+![image](./images/trace_arthas.jpeg)
+
+The #11, #13 and #15 indicates the line in source code
+
+<br/>
+<br/>
 ### Force GC
  
 The command vmtool can force the GC as follows:
@@ -377,28 +395,6 @@ The command vmtool can force the GC as follows:
 
 <br/>
 <br/>
-
-### Profile invocation of a method
-
-
-
-Command `trace` is useful to help discovering and locating the performance flaws in your system.
-<br/>
-Given a method, it shows the total execution time of other methods called from inside of the method. 
-<br/>
-NOTE: It can only trace the first level method call each time.
-
-```
-[arthas@10]$ [arthas@10]$ trace com.test.MyClass go
-[arthas@10]$ stop
-```
-![image](./images/trace_arthas.jpeg)
-
-The #11, #13 and #15 indicates the line in source code
-
-<br/>
-<br/>
-
 
 ## Appendix:  Using Kubernetes
 
