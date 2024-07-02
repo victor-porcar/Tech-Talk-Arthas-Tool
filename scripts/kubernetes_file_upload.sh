@@ -4,7 +4,7 @@
 if [ "$#" -ne 4 ]; then
 	echo -e "\n"
     echo "Illegal number of parameters."
-    echo "USAGE: upload_file_kubernetes.sh <KUBERNETES_NAMESPACE> <LOCAL_FILE_PATH> <POD_NAME_PATTERN> <POD_FILE_PATH>"
+    echo "USAGE: upload_file_kubernetes.sh <LOCAL_FILE_PATH> <KUBERNETES_NAMESPACE>  <POD_NAME_PATTERN> <POD_FILE_PATH>"
     echo "this command will upload the given local file on path <LOCAL_FILE_PATH> to the path <POD_FILE_PATH> of"
     echo "all pods belonging to the given Namespace and having given <POD_NAME_PATTERN> as part of its name"
     echo -e "\n"
@@ -13,8 +13,8 @@ if [ "$#" -ne 4 ]; then
     exit;
 fi
 
-KUBERNETES_NAMESPACE=$1
-LOCAL_FILE_PATH=$2
+KUBERNETES_NAMESPACE=$2
+LOCAL_FILE_PATH=$1
 POD_NAME_PATTERN=$3
 POD_FILE_PATH=$4
 
