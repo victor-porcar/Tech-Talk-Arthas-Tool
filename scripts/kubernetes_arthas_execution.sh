@@ -1,9 +1,9 @@
 #!/bin/bash
 
-if [ "$#" -ne 2 ]; then
+if [ "$#" -ne 3 ]; then
 	echo -e "\n"
     echo "Illegal number of parameters."
-    echo "USAGE: arthas_execution_kubernetes.sh <POD_NAME_PATTERN> <ARTHAS_COMMAND>"
+    echo "USAGE: arthas_execution_kubernetes.sh <KUBERNETES_NAMESPACE> <POD_NAME_PATTERN> <ARTHAS_COMMAND>"
     echo "this command will apply the given <ARTHAS_COMMAND> to all pods having in its name the string <POD_NAME_PATTERN>"
     echo -e "\n"
     echo 'Example: arthas_execution_kubernetes.sh "my-pod" "dashboard"'
