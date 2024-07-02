@@ -373,17 +373,39 @@ Given a method, it shows the total execution time of other methods called from i
 <br/>
 NOTE: It can only trace the first level method call each time.
 <br/>
-For example:
+For example, given the following class
+
+```
+package com.test;
+public class MyClass {
+
+    public void go() {
+        // some code
+        method1();
+        // some code
+        method2();
+        // some code
+        method3();
+        // some code
+    }
+    ...
+}
+
+```
+
+The following trace command profiles `go()`  invocations
+
 ```
 [arthas@10]$ [arthas@10]$ trace com.test.MyClass go
 [arthas@10]$ stop
 ```
 ![image](./images/trace_arthas.jpeg)
 
-The #11, #13 and #15 indicates the line in source code
+NOTE: The #11, #13 and #15 indicates the line in source code
 
 <br/>
 <br/>
+
 ### Force GC
  
 The command vmtool can force the GC as follows:
