@@ -292,9 +292,11 @@ For example the following command will filter all objects of MyClass having `b` 
 
 NOTE: 
  
-* `instances.{? #this.b.equals("Culture")}` can be seen as the Java expression: `instances.stream().filter(x->x.equals("Culture)).collect(Collectors.toList())`
+> `instances.{? #this.b.equals("Culture")}`
+> can be seen as the Java expression:
+> `instances.stream().filter(x->x.equals("Culture)).collect(Collectors.toList())`
 
-So in this way if is required to get the value of `a` attribute of those objects then:
+Following this, if it is required to get the value of `a` attribute of those objects then:
 
 `vmtool --action getInstances -className com.test.MyClass --express 'instances.{? #this.b.equals("Culture")}.{#this.a}'`
 
