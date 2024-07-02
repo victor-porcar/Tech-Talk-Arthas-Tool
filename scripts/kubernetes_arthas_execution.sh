@@ -6,7 +6,7 @@ if [ "$#" -ne 3 ]; then
     echo "USAGE: arthas_execution_kubernetes.sh <KUBERNETES_NAMESPACE> <POD_NAME_PATTERN> <ARTHAS_COMMAND>"
     echo "this command will apply the given <ARTHAS_COMMAND> to all pods belonging to the given Namespace and having in its name the string prefix <POD_NAME_PATTERN>"
     echo -e "\n"
-    echo 'Example: arthas_execution_kubernetes.sh "my-namespace" "my-pod" "dashboard;stop"'
+    echo 'Example: arthas_execution_kubernetes.sh "my-namespace" "my-pod" "jvm;stop"'
     echo -e "\n"
     exit;
 fi
